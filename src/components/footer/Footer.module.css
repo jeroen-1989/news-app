@@ -1,0 +1,17 @@
+.footer {
+    background-color: #262626;
+    height: 200px;
+    margin-top: 4vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-right: 40px;
+    border-top: 10px solid #f10000;
+    box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.footer-icon {
+    width: 40px;
+    margin: 40px 10px 10px 10px;
+    cursor: pointer;
+}

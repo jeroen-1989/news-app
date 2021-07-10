@@ -1,0 +1,145 @@
+.container {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 3vh 2vw 3vh 2vw;
+    width: 60vw;
+    background: white;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.header {
+    font-family: Georgia, serif;
+    font-size: 16pt;
+    margin: 10px 10px 20px 10px;
+    color: #262626;
+}
+
+.head, .lead, .text {
+    width: 40vw;
+    padding: 5px;
+    border-radius: 5px;
+    background: #c7e2e5;
+    border: 1px solid #940202;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+.head {
+    height: 25px;
+}
+
+.lead {
+    margin-top: 20px;
+    height: 80px;
+}
+
+.text {
+    height: 150px;
+}
+
+.head:focus, .lead:focus, .text:focus {
+    background: white;
+}
+
+::placeholder {
+    font-family: helvetica, sans-serif;
+}
+
+.preview {
+    margin-bottom: 10px;
+    width: 40vw;
+    border-radius: 5px;
+}
+
+.uploader {
+    margin-top: 20px;
+    margin-bottom: -10px;
+}
+
+.reminder {
+    align-self: flex-end;
+    font-style: italic;
+    font-size: 10pt;
+    margin-top: 10px;
+}
+
+.button, .cancel {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: #940202;
+    outline: none;
+    background-position: center;
+    transition: background 2s;
+}
+
+.button {
+    width: 40vw;
+    height: 25px;
+    margin-top: 20px;
+}
+
+.button:hover, .cancel:hover {
+    background: #f10000 radial-gradient(circle, transparent 1%, #f10000 1%) center/15000%;
+}
+
+.button:active, .cancel:active {
+    background-color: #e94646;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.cancel {
+    font-size: 8pt;
+    padding: 5px;
+    width: 100px;
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        width: 90vw;
+        background: rgba(241, 0, 0, 0.8);
+        border: 1px solid #f10000;
+    }
+
+    .header {
+        color: white;
+    }
+
+    .uploader {
+        color: white;
+    }
+
+    .head, .lead, .text, .button, .preview {
+        width: 70vw;
+    }
+
+    .reminder {
+        color: white;
+        font-size: 8pt;
+    }
+
+    .form {
+        border-color: #940202;
+        background: #e94646;
+    }
+}

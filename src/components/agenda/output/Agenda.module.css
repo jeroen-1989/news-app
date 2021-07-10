@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 3vh 4vw 0 2vw;
+    padding: 10px 10px 20px 10px;
+    background: #e9e9e9;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 20vw;
+    min-width: 180px;
+    max-height: 550px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.title {
+    font-family: Georgia, serif;
+    text-align: center;
+    padding: 10px;
+    margin-top: -10px;
+    color: white;
+    background-color: #f10000;
+    width: 100%
+}
+
+.agenda {
+    padding: 10px;
+    width: 85%;
+    border-bottom: 1px solid #940202;
+}
+
+.event {
+    font-family: Georgia, serif;
+    font-size: 13pt;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.content {
+    font-size: 10pt;
+    line-height: 1.5;
+}
+
+.today {
+    background: white;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        width: 90vw;
+        height: 27vh;
+        overflow: scroll;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .title {
+        background: rgba(241, 0, 0, 0.8);
+    }
+}

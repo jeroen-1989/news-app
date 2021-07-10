@@ -1,0 +1,74 @@
+.container {
+}
+
+.header {
+    background-color: #f10000;
+    position: fixed;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.logoContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 50px;
+}
+
+.logo, .lokaal {
+    display: block;
+    float: left;
+    font-family: Georgia, serif;
+    font-size: 24pt;
+    color: white;
+    padding-top: 10px;
+}
+
+.logo {
+    padding-left: 10px;
+}
+
+.lokaal {
+    color: #940202;
+}
+
+.image {
+    position: relative;
+    width: 100%;
+    z-index: -2;
+}
+
+.welcome {
+    color: white;
+    margin-top: -10vh;
+    padding: 10px;
+    font-family: Georgia, serif;
+    font-size: 3vh;
+}
+
+@media screen and (max-width: 500px) {
+    .logo, .lokaal {
+        font-size: 20pt;
+    }
+
+    .image-container {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .image {
+        width: 200%;
+        margin-bottom: 18px;
+        left: -250px;
+    }
+
+    .welcome {
+        font-size: 2vh;
+    }
+
+}
+
+

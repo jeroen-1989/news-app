@@ -1,0 +1,106 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 3vh 2vw 3vh 2vw;
+    width: 60vw;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.header {
+    font-family: Georgia, serif;
+    font-size: 16pt;
+    margin: 10px 10px 20px 10px;
+    color: #262626;
+}
+
+.input {
+    width: 40vw;
+    padding: 5px;
+    border-radius: 5px;
+    background: #c7e2e5;
+    border: 1px solid #940202;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    outline: none;
+    font-family: helvetica, sans-serif;
+}
+
+.input:focus {
+    background: white;
+}
+
+.input::placeholder {
+    font-family: helvetica, sans-serif;
+}
+
+.button, .cancel {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: #940202;
+    outline: none;
+    background-position: center;
+    transition: background 2s;
+}
+
+.button {
+    width: 40vw;
+    height: 25px;
+    background-color: #940202;
+}
+
+.button:hover, .cancel:hover {
+    background: #940202 radial-gradient(circle, transparent 1%, #940202 1%) center/15000%;
+}
+
+.button:active, .cancel:active {
+    background-color: #e94646;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.cancel {
+    font-size: 8pt;
+    padding: 5px;
+    width: 100px;
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        width: 90vw;
+        background: rgba(241, 0, 0, 0.8);
+        border: 1px solid #f10000;
+    }
+
+    .form {
+        border-color: #940202;
+        background: #e94646;
+    }
+
+    .header, .uploader {
+        color: white;
+    }
+
+    .input, .button {
+        width: 70vw;
+    }
+}
