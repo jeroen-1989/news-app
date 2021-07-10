@@ -32,7 +32,7 @@ function Login() {
         const path = "/"
         setTimeout(() => {
             history.push(path)
-        }, 2000);
+        }, 2000)
     }
 
     return <div className={styles.container}>

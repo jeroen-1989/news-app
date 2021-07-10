@@ -34,18 +34,18 @@ const BlogsInput = () => {
             timestamp: timestamp,
             ImageServer: url
         })
-            .then((docRef) => {
+            .then(() => {
                 console.log("Het bericht is succesvol verzonden.")
             })
             .catch((error) => {
-                console.log("Er is iets foutgegaan: ", error)
+                console.log("Er is iets fout gegaan: ", error)
             })
     }
 
     const history = useHistory()
     const routeChange = () => {
         setTimeout(() => {
-            history.push('/')
+            history.push("/")
         }, 2000);
     }
 

@@ -3,20 +3,25 @@ import {UserContext} from "../../../context/UserProvider"
 import styles from "./Dropdown.module.css"
 import {NavLink} from "react-router-dom"
 import LogOut from "../../auth/logout/LogOut"
-import {auth} from "../../../firebase/firebase"
 
 function Dropdown() {
     const user = useContext(UserContext)
     const [checked, setChecked] = useState(false)
-    const handleClick = () => setChecked (!checked)
-
-user && console.log(auth.currentUser.email);
-
+    const handleClick = () => setChecked(!checked)
 
     return (
         <div className={styles.container}>
-            {user && <nav>
-                    <input className={styles["menu-btn"]} type="checkbox" checked={checked} onClick={handleClick}/>
+            {
+                user ?
+                <nav>
+
+                    <input
+                        className={styles["menu-btn"]}
+                        type="checkbox"
+                        checked={checked}
+                        onClick={handleClick}
+                    />
+
                     <label className={styles["menu-icon"]}>
                         <span className={styles.navicon}/>
                     </label>
@@ -36,11 +41,13 @@ user && console.log(auth.currentUser.email);
                         </NavLink>
                         <LogOut onClick={handleClick}>Log out</LogOut>
                     </ul>
-                </nav>}
+                </nav>
 
-            {!user && <NavLink className={styles.login} to="/login">
+                :
+                <NavLink className={styles.login} to="/login">
                     Login
-                </NavLink>}
+                </NavLink>
+            }
         </div>
     );
 }

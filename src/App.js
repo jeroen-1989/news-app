@@ -62,7 +62,10 @@ function App() {
                     <Login/>
                     <Preview/>
                     <div className={styles["user-content"]}>
-                        <Blogs/>
+                        <div>
+                            <Editorial/>
+                            <Blogs/>
+                        </div>
                         <Agenda/>
                     </div>
                 </Route>
@@ -71,7 +74,10 @@ function App() {
                     <Register/>
                     <Preview/>
                     <div className={styles["user-content"]}>
-                        <Blogs/>
+                        <div>
+                            <Editorial/>
+                            <Blogs/>
+                        </div>
                         <Agenda/>
                     </div>
                 </Route>

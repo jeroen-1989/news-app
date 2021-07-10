@@ -4,17 +4,18 @@ import {firebaseConfig} from "../../../firebase/firebase"
 import styles from "./Register.module.css"
 
 function Register() {
+
     const [loading, toggleLoading] = useState(false)
     const [error, setError] = useState("")
     const [registerSuccess, toggleRegisterSuccess] = useState(false)
     const history = useHistory()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const setUser = useState()
+    const [user, setUser] = useState()
 
     async function onSubmit(e) {
 
-        setError('')
+        setError("")
         toggleLoading(true)
         e.preventDefault()
 
@@ -30,9 +31,9 @@ function Register() {
         toggleLoading(false)
     }
 
-    if (registerSuccess) {
+    if (user) {
         setTimeout(() => {
-            history.push('/login')
+            history.push("/")
         }, 2000);
     }
 
@@ -45,13 +46,16 @@ function Register() {
                    onChange={e => setEmail(e.target.value)}
                    placeholder="Uw email ..."
                    type="email"
-                   name='email'
+                   name="email"
+                   required
                    value={email}/>
             <input className={styles.input}
                    onChange={e => setPassword(e.target.value)}
-                   placeholder='Uw wachtwoord ...'
-                   type='password'
-                   name='password'
+                   placeholder="Uw wachtwoord ..."
+                   type="password"
+                   name="password"
+                   minlength="6"
+                   required
                    value={password}/>
 
             <button className={styles.button}
@@ -60,24 +64,20 @@ function Register() {
                 {loading ? 'Versturen...' : 'Registreren'}
             </button>
 
-            {registerSuccess &&
-            <p className={styles.login}>
-                Registeren is gelukt! Je wordt nu doorgestuurd naar de inlog pagina!
-            </p>}
+            {
+                registerSuccess &&
+                <p className={styles.login}>Het registeren is gelukt. Je bent meteen ingelogd.</p>
+            }
 
-            {error &&
-            <p className={styles.login}>
-                {error}
-            </p>}
+            {
+                error &&
+                <p className={styles.login}>{error}</p>
+            }
 
             <p className={styles.login}>Heb je al een account?</p>
-            <p className={styles.login}>Je kunt je <Link className={styles.loginLink} to="/login">hier</Link> inloggen.
-            </p>
+            <p className={styles.login}>Je kunt je <Link className={styles.loginLink} to="/login">hier</Link> inloggen.</p>
 
-            <Link className={styles.cancel}
-                  to="/">
-                Annuleren
-            </Link>
+            <Link className={styles.cancel} to="/">Annuleren</Link>
 
         </form>
 

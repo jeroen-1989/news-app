@@ -1,12 +1,12 @@
 import React from 'react';
-import { ReactComponent as Sunny } from '../../images/zon.svg';
+import { ReactComponent as Sunny } from '../../images/weather-icons/zon.svg';
 import { ReactComponent as Rain } from '../../images/regen.svg';
-import { ReactComponent as Clouds } from '../../images/bewolkt.svg';
-import { ReactComponent as Snow } from '../../images/sneeuw.svg';
-import { ReactComponent as Wind } from '../../images/wind.svg';
-import { ReactComponent as Drizzle } from '../../images/regen-zon.svg';
-import { ReactComponent as Mist } from '../../images/mist.svg';
-import { ReactComponent as Mist2 } from '../../images/mist2.svg';
+import { ReactComponent as Clouds } from '../../images/weather-icons/bewolkt.svg';
+import { ReactComponent as Snow } from '../../images/weather-icons/sneeuw.svg';
+import { ReactComponent as Wind } from '../../images/weather-icons/wind.svg';
+import { ReactComponent as Drizzle } from '../../images/weather-icons/regen-zon.svg';
+import { ReactComponent as Mist } from '../../images/weather-icons/mist.svg';
+import { ReactComponent as Mist2 } from '../../images/weather-icons/mist2.svg';
 
 
 function weatherIcons(weatherType) {
