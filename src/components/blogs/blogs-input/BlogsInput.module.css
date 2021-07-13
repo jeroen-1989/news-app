@@ -1,4 +1,4 @@
-.container {
+.input-container {
     text-align: center;
     display: flex;
     align-items: center;
@@ -41,7 +41,7 @@
     outline: none;
 }
 
-.head, .lead, .text {
+.head, .lead {
     margin-bottom: 10px;
 }
 
@@ -56,6 +56,7 @@
 
 .text {
     height: 150px;
+    margin-bottom: 30px;
 }
 
 .head:focus, .lead:focus, .text:focus {
@@ -67,7 +68,7 @@
 }
 
 .preview {
-    margin-bottom: 10px;
+    margin-bottom: -10px;
     width: 40vw;
     border-radius: 5px;
 }
@@ -81,7 +82,7 @@
     align-self: flex-end;
     font-style: italic;
     font-size: 10pt;
-    margin-top: 10px;
+    margin: 10px 0 20px 0;
 }
 
 .button, .cancel {

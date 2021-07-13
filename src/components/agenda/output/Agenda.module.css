@@ -8,9 +8,12 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 20vw;
     min-width: 180px;
-    max-height: 550px;
     overflow: hidden;
     border-radius: 5px;
+}
+
+.small {
+    max-height: 350px;
 }
 
 .title {
@@ -48,6 +51,24 @@
     text-align: center;
 }
 
+.load-text {
+    margin: 20px auto 0 auto;
+    text-align: center;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+.load-text:hover {
+    color: #940202;
+    transition: all 1s ease;
+}
+
+.hidden {
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+}
+
 @media screen and (max-width: 500px) {
     .container {
         width: 90vw;
@@ -59,5 +80,13 @@
 
     .title {
         background: rgba(241, 0, 0, 0.8);
+    }
+
+    .load-text {
+        color: white;
+    }
+
+    .load-text:hover {
+        color: #f10000;
     }
 }

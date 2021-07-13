@@ -1,4 +1,4 @@
-.container {
+.input-container {
     text-align: center;
     display: flex;
     align-items: center;
@@ -31,7 +31,7 @@
     color: #262626;
 }
 
-.head, .lead, .text {
+.head, .caption, .lead, .text {
     width: 40vw;
     padding: 5px;
     border-radius: 5px;
@@ -42,8 +42,12 @@
     outline: none;
 }
 
-.head {
+.head, .caption {
     height: 25px;
+}
+
+.caption {
+    margin-bottom: -10px;
 }
 
 .lead {
@@ -55,7 +59,7 @@
     height: 150px;
 }
 
-.head:focus, .lead:focus, .text:focus {
+.head:focus, .caption:focus, .lead:focus, .text:focus {
     background: white;
 }
 
@@ -78,7 +82,7 @@
     align-self: flex-end;
     font-style: italic;
     font-size: 10pt;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
 .button, .cancel {
@@ -115,7 +119,7 @@
 }
 
 @media screen and (max-width: 500px) {
-    .container {
+    .input-container {
         width: 90vw;
         background: rgba(241, 0, 0, 0.8);
         border: 1px solid #f10000;
@@ -129,7 +133,7 @@
         color: white;
     }
 
-    .head, .lead, .text, .button, .preview {
+    .head, .caption, .lead, .text, .button, .preview {
         width: 70vw;
     }
 

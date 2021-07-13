@@ -1,5 +1,4 @@
 import React, {useState} from "react"
-import {Link, useHistory} from "react-router-dom"
 import {firebaseConfig} from "../../../firebase/firebase"
 import styles from "./Register.module.css"
 
@@ -8,10 +7,9 @@ function Register() {
     const [loading, toggleLoading] = useState(false)
     const [error, setError] = useState("")
     const [registerSuccess, toggleRegisterSuccess] = useState(false)
-    const history = useHistory()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [user, setUser] = useState()
+    const [setUser] = useState()
 
     async function onSubmit(e) {
 
@@ -31,13 +29,7 @@ function Register() {
         toggleLoading(false)
     }
 
-    if (user) {
-        setTimeout(() => {
-            history.push("/")
-        }, 2000);
-    }
-
-    return <div className={styles.container}>
+    return (
 
         <form className={styles.form}
               onSubmit={onSubmit}>
@@ -74,14 +66,8 @@ function Register() {
                 <p className={styles.login}>{error}</p>
             }
 
-            <p className={styles.login}>Heb je al een account?</p>
-            <p className={styles.login}>Je kunt je <Link className={styles.loginLink} to="/login">hier</Link> inloggen.</p>
-
-            <Link className={styles.cancel} to="/">Annuleren</Link>
-
         </form>
-
-    </div>
+    )
 }
 
 export default Register

@@ -58,7 +58,7 @@ const EditorialInput = () => {
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles["input-container"]}>
             <h2 className={styles.header}>
                 Voeg uw bericht hieronder toe:
             </h2>
@@ -67,7 +67,6 @@ const EditorialInput = () => {
                       sub(event)
                   }}>
 
-
                 <input className={styles.head}
                        type="text"
                        placeholder="Typ hier uw titel ..."
@@ -75,29 +74,39 @@ const EditorialInput = () => {
                        onChange={(e) => {
                            setTitle(e.target.value)
                        }}/>
-                {!url ? <input className={styles.uploader}
+                {
+                    !url &&
+                    <>
+                        <input className={styles.uploader}
                                type="file"
                                onChange={(e) => {
                                    setImage(e.target.files[0])
-                               }}/> : undefined}
-                {!url ? <button className={styles.button}
+                               }}/>
+                        <button className={styles.button}
                                 type="button"
                                 onClick={image ? upload : undefined}>
-                    Upload afbeelding
-                </button> : undefined}
-                <p className={styles.reminder}>*Vergeet niet om op de upload-knop te drukken.</p>
-                <img className={styles.preview}
-                     alt=""
-                     onChange={(e) => {
-                         url(e.target.value)
-                     }} src={url}/>
+                            Upload afbeelding
+                        </button>
+                        <p className={styles.reminder}>*Vergeet niet om op de upload-knop te drukken.</p>
+                    </>
+                }
+                {
+                    url &&
+                    <>
+                        <img className={styles.preview}
+                             alt=""
+                             onChange={(e) => {
+                                 url(e.target.value)
+                             }} src={url}/>
 
-                {url && <input className={styles.head}
+                        <input className={styles.caption}
                                type="text"
                                placeholder="Typ hier een foto-onderschrift ..."
                                onChange={(e) => {
                                    setCaption(e.target.value)
-                               }}/>}
+                               }}/>
+                    </>
+                }
                 <textarea className={styles.lead}
                           placeholder="Typ hier uw inleiding ..."
                           onChange={(e) => {
@@ -110,24 +119,24 @@ const EditorialInput = () => {
                            setQuote(e.target.value)
                        }}/>
                 <textarea className={styles.text}
-                          placeholder="Typ hier de tweede paragraaf ..."
+                          placeholder="Typ hier (e.v.t.) de tweede paragraaf ..."
                           onChange={(e) => {
                               setParagraphOne(e.target.value)
                           }}/>
                 <textarea className={styles.text}
-                          placeholder="Typ hier de derde paragraaf ..."
+                          placeholder="Typ hier (e.v.t.) de derde paragraaf ..."
                           onChange={(e) => {
                               setParagraphTwo(e.target.value)
                           }}/>
                 <textarea className={styles.text}
-                          placeholder="Typ hier de vierde paragraaf ..."
+                          placeholder="Typ hier (e.v.t.) de vierde paragraaf ..."
                           onChange={(e) => {
                               setParagraphThree(e.target.value)
                           }}/>
                 <button className={styles.button}
                         type="submit"
-                        onClick={() =>
-                        {title ? routeChange() : setButtonText("Typ minimaal een titel ...")
+                        onClick={() => {
+                            title ? routeChange() : setButtonText("Typ minimaal een titel ...")
                         }}>
                     {buttonText}
                 </button>
@@ -136,6 +145,7 @@ const EditorialInput = () => {
                   to="/">
                 Annuleren
             </Link>
+
         </div>
     );
 }

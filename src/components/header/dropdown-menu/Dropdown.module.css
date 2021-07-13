@@ -1,18 +1,9 @@
-.menu {
-    position: absolute;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    overflow: hidden;
-}
-
 nav {
     width: 250px;
     height: 50px;
 }
 
-.navlink {
+.nav-link {
     display: block;
     padding: 20px 20px;
     text-decoration: none;
@@ -25,7 +16,7 @@ nav {
     border-bottom: 1px solid #940202;
 }
 
-.login {
+.login-btn {
     width: 252px;
     height: 50px;
     text-align: center;
@@ -42,6 +33,7 @@ nav {
     transition: background 2s;
     box-sizing: border-box;
     border-left: 2px solid #940202;
+    cursor: pointer;
 }
 
 li {
@@ -49,13 +41,12 @@ li {
     padding-right: 10px;
 }
 
-.login:hover,
-.navlink:hover {
+.login-btn:hover,
+.nav-link:hover {
     background: #940202 radial-gradient(circle, transparent 1%, #940202 1%) center/15000%;
-    transition: background 2s;
 }
 
-.login:active, .navlink:active {
+.login-btn:active, .nav-link:active {
     background-color: #e94646;
     background-size: 100%;
     transition: background 0s;
@@ -69,6 +60,11 @@ li {
     top: 50px;
     width: 200px;
     transition: max-height .2s ease-out;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
 }
 
 .menu-icon {
@@ -79,7 +75,7 @@ li {
     user-select: none;
 }
 
-.navicon {
+.nav-icon {
     background: #940202;
     display: block;
     height: 2px;
@@ -89,8 +85,8 @@ li {
     margin-right: 20px;
 }
 
-.navicon:before,
-.navicon:after {
+.nav-icon:before,
+.nav-icon:after {
     background: #940202;
     content: '';
     display: block;
@@ -100,11 +96,11 @@ li {
     width: 100%;
 }
 
-.navicon:before {
+.nav-icon:before {
     top: 5px;
 }
 
-.navicon:after {
+.nav-icon:after {
     top: -5px;
 }
 
@@ -125,26 +121,68 @@ li {
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.7);
 }
 
-.menu-btn:checked ~ .menu-icon .navicon {
+.menu-btn:checked ~ .menu-icon .nav-icon {
     background: transparent;
 }
 
-.menu-btn:checked ~ .menu-icon .navicon:before {
+.menu-btn:checked ~ .menu-icon .nav-icon:before {
     transform: rotate(-45deg);
 }
 
-.menu-btn:checked ~ .menu-icon .navicon:after {
+.menu-btn:checked ~ .menu-icon .nav-icon:after {
     transform: rotate(45deg);
 }
 
-.menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-.menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+.menu-btn:checked ~ .menu-icon:not(.steps) .nav-icon:before,
+.menu-btn:checked ~ .menu-icon:not(.steps) .nav-icon:after {
     top: 0;
 }
 
+.login-container {
+    text-align: center;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 50px;
+    right: 0;
+    background-color: #f10000;
+    padding: 15px;
+    box-shadow: 0 10px 6px 0 rgba(0, 0, 0, 0.6);
+    width: 250px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.logintoggle {
+    color: white;
+    line-height: 1.6;
+    font-size: 10pt;
+    margin-right: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.cancel {
+    color: white;
+    text-decoration: none;
+    font-size: 10pt;
+    padding-top: 10px;
+    margin: 10px 10px 0 10px;
+    width: 200px;
+    border-top: 1px solid #940202;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 500px) {
-    .login {
+
+    .login-btn {
         width: 150px;
+    }
+
+    .login-container {
+        width: 100%;
+        background-color: #f10000;
     }
 
     .menu-icon, .menu-button {

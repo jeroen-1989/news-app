@@ -1,64 +1,66 @@
-import {firestore} from '../../firebase/firebase'
-import React, {useState, useEffect} from 'react'
-import styles from './Blogs.module.css'
+import {firestore} from "../../firebase/firebase"
+import React, {useState, useEffect} from "react"
+import styles from "./Blogs.module.css"
 
 const Blogs = () => {
     const [blogs, setBlogs] = useState([])
+    const [showButton, setShowButton] = useState(true)
+    const [blogsCount, setBlogsCount] = useState(5)
+    const items = []
 
-    const getData = () => {
-        firestore.collection("blogs")
-            .orderBy("timestamp", "desc")
-            .get()
-            .then((querySnapshot) => {
-                querySnapshot.forEach(element => {
-                    const data = element.data()
-                    setBlogs(arr => [...arr, data])
-                })
-            })
+    const loadMoreBlogs = () => {
+        setBlogsCount(blogs.length)
     }
 
     useEffect(() => {
-        getData()
-    }, [])
+        const fetchData = async () => {
+            await firestore.collection("blogs")
+                .orderBy("timestamp", "desc")
+                .onSnapshot(function (querySnapshot) {
+                    querySnapshot.forEach(function (editorial) {
+                        items.push({key: editorial.id, ...editorial.data()})
+                    })
+                    setBlogs(items)
+                })
+        }
+        fetchData()
+    }, []) //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className={styles.container}>
             {
-                blogs.map((blogs) => (
-                    <Frame title={blogs.Title}
-                           image={blogs.ImageServer}
-                           lead={blogs.Lead}
-                           body={blogs.Body}
-                    />
+                blogs.slice(0, blogsCount).map((blogs) => (
+
+                    <div className={styles["output-container"]}>
+                        <input className={styles["article-btn"]} type="checkbox"/>
+                        <label className={styles["article-icon"]}>
+                            <span className={styles.icon}/>
+                        </label>
+                        <article className={styles["article-container"]}>
+
+                            <h4 className={styles.head}>
+                                {blogs.Title}
+                            </h4>
+                            <img className={styles.picture}
+                                 src={blogs.ImageServer}
+                                 alt=""/>
+                            <p className={styles.paragraph}>
+                                {blogs.Lead}
+                            </p>
+                            <p className={styles.text}>
+                                {blogs.Body}
+                            </p>
+                        </article>
+                    </div>
                 ))
             }
-        </div>
-    )
-}
-
-const Frame = ({title, image, lead, body}) => {
-
-    return (
-        <div className={styles["output-container"]}>
-            <input className={styles["article-btn"]} type="checkbox"/>
-            <label className={styles["article-icon"]}>
-                <span className={styles.icon}/>
-            </label>
-            <article className={styles["article-container"]}>
-
-                <h4 className={styles.head}>
-                    {title}
-                </h4>
-                <img className={styles.picture}
-                     src={image}
-                     alt=""/>
-                <p className={styles.paragraph}>
-                    {lead}
-                </p>
-                <p className={styles.text}>
-                    {body}
-                </p>
-            </article>
+            <p onClick={() => {
+                loadMoreBlogs()
+                setShowButton(false)
+            }}
+               className={styles[showButton ? "load-text" : "hidden"]
+               }>
+                Meer berichten laden ...</p>
         </div>
     )
 }

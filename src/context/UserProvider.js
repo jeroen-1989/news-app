@@ -6,7 +6,6 @@ export const UserContext = createContext(null)
 function UserProvider({children}) {
     const [user, setUser] = useState(null)
 
-
     auth.onAuthStateChanged(userAuth => {
             setUser(userAuth)
         }
@@ -16,8 +15,7 @@ function UserProvider({children}) {
         <UserContext.Provider value={user}>
             {children}
         </UserContext.Provider>
-    );
-
+    )
 }
 
-export default UserProvider;
+export default UserProvider

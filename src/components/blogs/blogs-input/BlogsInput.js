@@ -15,7 +15,7 @@ const BlogsInput = () => {
         if (image == null)
             return;
         imageStorage.ref(`/images/${image.name}`).put(image)
-            .on("state_changed", alert("success"), alert, () => {
+            .on("state_changed", () => {
 
                 imageStorage.ref("images").child(image.name).getDownloadURL()
                     .then((url) => {
@@ -50,7 +50,7 @@ const BlogsInput = () => {
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles["input-container"]}>
             <h2 className={styles.header}>
                 Voeg uw bericht hieronder toe:
             </h2>
@@ -67,17 +67,23 @@ const BlogsInput = () => {
                        onChange={(e) => {
                            setTitle(e.target.value)
                        }}/>
-                {!url ? <input className={styles.uploader}
-                       type="file"
-                       onChange={(e) => {
-                           setImage(e.target.files[0])
-                       }}/> : undefined}
-                {!url ? <button className={styles.button}
-                        type="button"
-                        onClick={image ? upload : undefined}>
-                    Upload afbeelding
-                </button> : undefined}
-                <p className={styles.reminder}>*Vergeet niet om op de upload-knop te drukken.</p>
+                {
+                    !url ?
+                        <>
+                            <input className={styles.uploader}
+                                   type="file"
+                                   onChange={(e) => {
+                                       setImage(e.target.files[0])
+                                   }}/>
+                            <button className={styles.button}
+                                    type="button"
+                                    onClick={image ? upload : undefined}>
+                                Upload afbeelding
+                            </button>
+                            <p className={styles.reminder}>*Vergeet niet om op de upload-knop te drukken.</p>
+                        </>
+                        : undefined
+                }
                 <img className={styles.preview}
                      alt=""
                      onChange={(e) => {
@@ -95,7 +101,8 @@ const BlogsInput = () => {
                           }}/>
                 <button className={styles.button}
                         type="submit"
-                        onClick={() => {title ? routeChange() : setButtonText("Typ minimaal een titel ...")
+                        onClick={() => {
+                            title ? routeChange() : setButtonText("Typ minimaal een titel ...")
                         }}>
                     {buttonText}
                 </button>

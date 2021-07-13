@@ -12,7 +12,6 @@ import Blogs from "./components/blogs/Blogs"
 import AgendaInput from "./components/agenda/input/AgendaInput"
 import Agenda from "./components/agenda/output/Agenda"
 import Footer from "./components/footer/Footer"
-import Preview from "./components/editorial/preview/Preview"
 import Weather from "./components/weather/Weather"
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
 
             <Switch>
                 <Route exact path="/">
-                    <Preview/>
                     <div className={styles["user-content"]}>
                         <div>
                             <Editorial/>
@@ -35,52 +33,31 @@ function App() {
                     </div>
                 </Route>
 
-                {user && <Route path="/add-story">
-                    <div className={styles["user-content"]}>
-                        <BlogsInput/>
-                        <Agenda/>
-                    </div>
-                </Route>}
+                {
+                    user &&
+                    <>
+                        <Route path="/add-story">
+                            <div className={styles["user-content"]}>
+                                <BlogsInput/>
+                            </div>
+                        </Route>
 
-                {user && <Route path="/add-main-story">
-                    <div className={styles["user-content"]}>
-                        <EditorialInput/>
-                        <Agenda/>
-                    </div>
-                </Route>}
+                        <Route path="/add-main-story">
+                            <div className={styles["user-content"]}>
+                                <EditorialInput/>
+                            </div>
+                        </Route>
 
-                {user && <Route path='/agenda'>
-                    <div className={styles["user-content"]}>
-                        <div>
-                            <AgendaInput/>
-                        </div>
-                        <Agenda/>
-                    </div>
-                </Route>}
+                        <Route path='/agenda'>
+                            <div className={styles["user-content"]}>
+                                <div>
+                                    <AgendaInput/>
+                                </div>
+                            </div>
+                        </Route>
+                    </>
+                }
 
-                <Route path='/login'>
-                    <Login/>
-                    <Preview/>
-                    <div className={styles["user-content"]}>
-                        <div>
-                            <Editorial/>
-                            <Blogs/>
-                        </div>
-                        <Agenda/>
-                    </div>
-                </Route>
-
-                <Route path='/register'>
-                    <Register/>
-                    <Preview/>
-                    <div className={styles["user-content"]}>
-                        <div>
-                            <Editorial/>
-                            <Blogs/>
-                        </div>
-                        <Agenda/>
-                    </div>
-                </Route>
 
             </Switch>
             <Footer/>

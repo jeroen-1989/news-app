@@ -1,19 +1,3 @@
-.container {
-    text-align: center;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 50px;
-    right: 0;
-    background-color: #f10000;
-    padding: 15px;
-    box-shadow: 0 10px 6px 0 rgba(0, 0, 0, 0.6);
-    width: 250px;
-    box-sizing: border-box;
-    z-index: 1;
-}
-
 .form {
     display: flex;
     flex-direction: column;
@@ -43,59 +27,26 @@
     color: white;
     background-color: #940202;
     outline: none;
-    transition: background 2s;
     text-decoration: none;
     font-size: 10pt;
     padding: 5px;
+    background-position: center;
+    transition: background 2s;
 }
 
 .button:hover {
-    background: #f10000 radial-gradient(circle, transparent 1%, #f10000 1%) center/15000%;
+    background: #e94646 radial-gradient(circle, transparent 1%, #e94646 1%) center/15000%;
+    transition: background 2s;
 }
 
 .button:active {
-    background-color: #e94646;
+    background: #940202;
     background-size: 100%;
-    transition: background 1s;
-}
-
-.register {
-    color: white;
-    line-height: 1.6;
-    font-size: 10pt;
-    margin-right: 5px;
-    margin-left: 5px;
-}
-
-.registerLink {
-    text-decoration: none;
-    color: white;
-    transition: all 1s ease;
-    border-bottom: 2px solid white;
-}
-
-.registerLink:hover {
-    font-size: 16px;
-    padding: 6px;
-    transition: all 1s ease;
-}
-
-.cancel {
-    color: white;
-    text-decoration: none;
-    font-size: 10pt;
-    padding-top: 10px;
-    margin: 10px 10px 0px 10px;
-    width: 200px;
-    border-top: 1px solid #940202;
+    transition: background 0s;
 }
 
 @media screen and (max-width: 500px) {
-    .container {
-        width: 100%;
-        background-color: #f10000;
-        box-shadow: none;
-    }
+
     .form {
         margin-left: 5px;
     }

@@ -138,6 +138,24 @@
     background: #940202;
 }
 
+.load-text {
+    margin: 20px auto 0 auto;
+    text-align: center;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+.load-text:hover {
+    color: #940202;
+    transition: all 1s ease;
+}
+
+.hidden {
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+}
+
 @media screen and (max-width: 500px) {
 
     .container {
@@ -193,8 +211,13 @@
         color: #262626;
         font-size: 5vw;
     }
+    .load-text {
+        color: white;
+    }
 
-
+    .load-text:hover {
+        color: #f10000;
+    }
 }
 
 
