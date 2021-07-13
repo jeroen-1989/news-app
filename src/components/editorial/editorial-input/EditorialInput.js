@@ -25,7 +25,7 @@ const EditorialInput = () => {
                     .then((url) => {
                         setUrl(url)
                     })
-            });
+            })
     }
 
     const sub = (e) => {
@@ -53,8 +53,8 @@ const EditorialInput = () => {
     const history = useHistory()
     const routeChange = () => {
         setTimeout(() => {
-            history.push('/')
-        }, 2000);
+            history.push("/")
+        }, 2000)
     }
 
     return (
@@ -74,6 +74,7 @@ const EditorialInput = () => {
                        onChange={(e) => {
                            setTitle(e.target.value)
                        }}/>
+
                 {
                     !url &&
                     <>
@@ -90,6 +91,7 @@ const EditorialInput = () => {
                         <p className={styles.reminder}>*Vergeet niet om op de upload-knop te drukken.</p>
                     </>
                 }
+
                 {
                     url &&
                     <>
@@ -98,7 +100,6 @@ const EditorialInput = () => {
                              onChange={(e) => {
                                  url(e.target.value)
                              }} src={url}/>
-
                         <input className={styles.caption}
                                type="text"
                                placeholder="Typ hier een foto-onderschrift ..."
@@ -107,6 +108,7 @@ const EditorialInput = () => {
                                }}/>
                     </>
                 }
+
                 <textarea className={styles.lead}
                           placeholder="Typ hier uw inleiding ..."
                           onChange={(e) => {

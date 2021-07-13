@@ -2,18 +2,17 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 3vh 4vw 0 2vw;
     padding: 10px 10px 20px 10px;
     background: #e9e9e9;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 20vw;
     min-width: 180px;
-    overflow: hidden;
     border-radius: 5px;
+    margin: 3vh 4vw 0 2vw;
 }
 
 .small {
-    max-height: 350px;
+    max-height: 400px;
 }
 
 .title {
@@ -56,6 +55,7 @@
     text-align: center;
     cursor: pointer;
     transition: all 1s ease;
+    font-size: 10pt;
 }
 
 .load-text:hover {
@@ -72,21 +72,22 @@
 @media screen and (max-width: 500px) {
     .container {
         width: 90vw;
-        height: 27vh;
         overflow: scroll;
         margin: 0;
         box-sizing: border-box;
+        background: rgba(241, 0, 0, 0.8);
+        border: 1px solid #f10000;
     }
 
     .title {
-        background: rgba(241, 0, 0, 0.8);
+        background: none;
     }
 
-    .load-text {
+    .event, .content, .load-text {
         color: white;
     }
 
     .load-text:hover {
-        color: #f10000;
+        color: #940202;
     }
 }

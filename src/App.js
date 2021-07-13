@@ -1,9 +1,7 @@
 import React, {useContext} from 'react'
 import styles from "./App.module.css"
-import {Switch, Route} from "react-router-dom"
+import {Switch, Route, Link} from "react-router-dom"
 import {UserContext} from "./context/UserProvider"
-import Login from "./components/auth/login/Login"
-import Register from "./components/auth/register/Register"
 import Header from "./components/header/Header"
 import EditorialInput from "./components/editorial/editorial-input/EditorialInput"
 import Editorial from "./components/editorial/Editorial"
@@ -25,11 +23,13 @@ function App() {
             <Switch>
                 <Route exact path="/">
                     <div className={styles["user-content"]}>
-                        <div>
+                        <div className={styles["news-container"]}>
                             <Editorial/>
                             <Blogs/>
                         </div>
-                        <Agenda/>
+                        <div className={styles["agenda-container"]}>
+                            <Agenda/>
+                        </div>
                     </div>
                 </Route>
 
@@ -48,7 +48,7 @@ function App() {
                             </div>
                         </Route>
 
-                        <Route path='/agenda'>
+                        <Route path="/agenda">
                             <div className={styles["user-content"]}>
                                 <div>
                                     <AgendaInput/>
@@ -58,11 +58,10 @@ function App() {
                     </>
                 }
 
-
             </Switch>
             <Footer/>
         </>
-    );
+    )
 }
 
-export default App;
+export default App

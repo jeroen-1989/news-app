@@ -190,6 +190,7 @@
     text-align: center;
     cursor: pointer;
     transition: all 1s ease;
+    font-size: 10pt;
 }
 
 .load-text:hover {

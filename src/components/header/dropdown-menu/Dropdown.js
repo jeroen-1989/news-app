@@ -78,14 +78,14 @@ function Dropdown() {
                             register ?
                                 <>
                                     <Register/>
-                                    <p onClick={() => toggleRegister(false)} className={styles.logintoggle}>
+                                    <p onClick={() => toggleRegister(false)} className={styles["login-toggle"]}>
                                         Heb je al een account?<br/>Je kunt hier inloggen.
                                     </p>
                                 </>
                                 :
                                 <>
                                     <Login/>
-                                    <p onClick={() => toggleRegister(true)} className={styles.logintoggle}>
+                                    <p onClick={() => toggleRegister(true)} className={styles["login-toggle"]}>
                                         Heb je nog geen account?<br/>Je kunt je hier registreren.
                                     </p>
                                 </>

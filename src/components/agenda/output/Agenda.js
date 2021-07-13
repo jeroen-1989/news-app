@@ -1,6 +1,7 @@
 import {firestore} from "../../../firebase/firebase"
 import React, {useState, useEffect} from "react"
 import styles from "./Agenda.module.css"
+import {Link} from "react-router-dom";
 
 function Agenda() {
     const [agenda, setAgenda] = useState([])
@@ -55,6 +56,7 @@ function Agenda() {
                className={styles[showButton ? "load-text" : "hidden"]
                }>
                 Meer agendapunten laden ...</p>
+
         </div>
     )
 }
