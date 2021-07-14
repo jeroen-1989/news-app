@@ -12,7 +12,7 @@
 
 .article-container {
     width: 60vw;
-    height: 70px;
+    height: 90px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 2vh 0 0 0;
@@ -25,9 +25,15 @@
 
 .title {
     font-family: georgia, serif;
-    font-size: 21pt;
+    font-size: 18pt;
     padding: 20px 20px 0 20px;
     color: #262626;
+}
+
+.category {
+    padding: 10px 0 0 20px;
+    font-size: 10pt;
+    color: #797979;
 }
 
 .image {
@@ -222,6 +228,10 @@
         color: white;
     }
 
+    .category {
+        color: #c3c3c3;
+    }
+
     .image {
         width: 100%;
     }
@@ -268,7 +278,10 @@
 
     .article-btn:checked ~ .article-container .title {
         color: #262626;
-        font-size: 7vw;
+    }
+
+    .article-btn:checked ~ .article-container .category {
+        color: #797979;
     }
 
     .load-text {

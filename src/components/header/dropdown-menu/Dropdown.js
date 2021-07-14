@@ -90,7 +90,7 @@ function Dropdown() {
                                     </p>
                                 </>
                         }
-                        <p onClick={() => toggleShowLogin(false)} className={styles.cancel}>annuleren</p>
+                        <p onClick={() => toggleShowLogin(false)} className={styles.cancel}>Annuleren ...</p>
 
                     </div> : undefined
             }

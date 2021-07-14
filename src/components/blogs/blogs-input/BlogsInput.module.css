@@ -49,9 +49,20 @@
     height: 25px;
 }
 
+.category {
+    margin: 20px 0 10px 0;
+    width: 40vw;
+    padding: 5px;
+    border-radius: 5px;
+    background: #c7e2e5;
+    border: 1px solid #940202;
+    box-sizing: border-box;
+    outline: none;
+    font-family: helvetica, sans-serif;
+}
+
 .lead {
     height: 80px;
-    margin-top: 20px;
 }
 
 .text {
@@ -59,7 +70,7 @@
     margin-bottom: 30px;
 }
 
-.head:focus, .lead:focus, .text:focus {
+.head:focus, .category:focus, .lead:focus, .text:focus {
     background: white;
 }
 
@@ -117,7 +128,7 @@
 }
 
 @media screen and (max-width: 500px) {
-    .container {
+    .input-container {
         width: 90vw;
         background: rgba(241, 0, 0, 0.8);
         border: 1px solid #f10000;

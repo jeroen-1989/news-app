@@ -43,6 +43,9 @@ function Editorial() {
                             <h2 className={styles.title}>
                                 {editorial.Title}
                             </h2>
+                            <p className={styles.category}>
+                                {editorial.Category} - {editorial.timestamp.toDate().toLocaleDateString("en-GB", { year: 'numeric', month: '2-digit', day: '2-digit' })}
+                            </p>
                             <img className={styles.image}
                                  src={editorial.ImageServer}
                                  alt=""/>

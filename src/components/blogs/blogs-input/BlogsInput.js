@@ -5,11 +5,19 @@ import {useHistory, Link} from "react-router-dom"
 
 const BlogsInput = () => {
     const [title, setTitle] = useState("")
+    const [category, setCategory] = useState("Algemeen")
     const [image, setImage] = useState("")
     const [lead, setLead] = useState("")
     const [body, setBody] = useState("")
     const [url, setUrl] = useState("")
     const [buttonText, setButtonText] = useState("Verzenden")
+
+    let categories = [
+        {label: "Algemeen", value: "Algemeen"},
+        {label: "Sport", value: "Sport"},
+        {label: "Politiek", value: "Politiek"},
+        {label: "Human interest", value: "Human interest"}
+    ]
 
     const upload = () => {
         if (image == null)
@@ -29,6 +37,7 @@ const BlogsInput = () => {
 
         firestore.collection("blogs").add({
             Title: title,
+            Category: category,
             Lead: lead,
             Body: body,
             timestamp: timestamp,
@@ -89,6 +98,16 @@ const BlogsInput = () => {
                      onChange={(e) => {
                          url(e.target.value)
                      }} src={url}/>
+                <select className={styles.category}
+                    onChange={(e) => {
+                        setCategory(e.target.value)
+                    }}>
+                    {categories.map((category) =>
+                        <option value={category.value}>
+                            {category.label}
+                        </option>
+                    )}
+                </select>
                 <textarea className={styles.lead}
                           placeholder="Typ hier uw inleiding ..."
                           onChange={(e) => {

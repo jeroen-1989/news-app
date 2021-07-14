@@ -37,10 +37,12 @@ const Blogs = () => {
                             <span className={styles.icon}/>
                         </label>
                         <article className={styles["article-container"]}>
-
                             <h4 className={styles.head}>
                                 {blogs.Title}
                             </h4>
+                            <p className={styles.category}>
+                                {blogs.Category} - {blogs.timestamp.toDate().toLocaleDateString("en-GB", { year: 'numeric', month: '2-digit', day: '2-digit' })}
+                            </p>
                             <img className={styles.picture}
                                  src={blogs.ImageServer}
                                  alt=""/>

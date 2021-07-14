@@ -5,6 +5,7 @@ import {useHistory, Link} from "react-router-dom"
 
 const EditorialInput = () => {
     const [title, setTitle] = useState("")
+    const [category, setCategory] = useState("Algemeen")
     const [image, setImage] = useState("")
     const [caption, setCaption] = useState("")
     const [lead, setLead] = useState("")
@@ -14,6 +15,13 @@ const EditorialInput = () => {
     const [paragraphThree, setParagraphThree] = useState("")
     const [url, setUrl] = useState("")
     const [buttonText, setButtonText] = useState("Verzenden")
+
+    let categories = [
+        {label: "Algemeen", value: "Algemeen"},
+        {label: "Sport", value: "Sport"},
+        {label: "Politiek", value: "Politiek"},
+        {label: "Human interest", value: "Human interest"}
+    ]
 
     const upload = () => {
         if (image == null)
@@ -33,6 +41,7 @@ const EditorialInput = () => {
 
         firestore.collection("editorial").add({
             Title: title,
+            Category: category,
             ImageServer: url,
             Caption: caption,
             Quote: quote,
@@ -109,6 +118,16 @@ const EditorialInput = () => {
                     </>
                 }
 
+                <select className={styles.category}
+                        onChange={(e) => {
+                            setCategory(e.target.value)
+                        }}>
+                    {categories.map((category) =>
+                        <option value={category.value}>
+                            {category.label}
+                        </option>
+                    )}
+                </select>
                 <textarea className={styles.lead}
                           placeholder="Typ hier uw inleiding ..."
                           onChange={(e) => {

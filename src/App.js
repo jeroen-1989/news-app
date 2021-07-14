@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import styles from "./App.module.css"
-import {Switch, Route, Link} from "react-router-dom"
+import {Switch, Route} from "react-router-dom"
 import {UserContext} from "./context/UserProvider"
 import Header from "./components/header/Header"
 import EditorialInput from "./components/editorial/editorial-input/EditorialInput"
