@@ -1,5 +1,5 @@
 import {firestore} from "../../firebase/firebase"
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import styles from "./Blogs.module.css"
 
 const Blogs = () => {
@@ -12,19 +12,17 @@ const Blogs = () => {
         setBlogsCount(blogs.length)
     }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            await firestore.collection("blogs")
-                .orderBy("timestamp", "desc")
-                .onSnapshot(function (querySnapshot) {
-                    querySnapshot.forEach(function (editorial) {
-                        items.push({key: editorial.id, ...editorial.data()})
-                    })
-                    setBlogs(items)
+    const fetchData = async () => {
+        await firestore.collection("blogs")
+            .orderBy("timestamp", "desc")
+            .onSnapshot(function (querySnapshot) {
+                querySnapshot.forEach(function (editorial) {
+                    items.push({key: editorial.id, ...editorial.data()})
                 })
-        }
-        fetchData()
-    }, []) //eslint-disable-line react-hooks/exhaustive-deps
+                setBlogs(items)
+            })
+    }
+    fetchData()
 
     return (
         <div className={styles.container}>
@@ -41,7 +39,11 @@ const Blogs = () => {
                                 {blogs.Title}
                             </h4>
                             <p className={styles.category}>
-                                {blogs.Category} - {blogs.timestamp.toDate().toLocaleDateString("en-GB", { year: 'numeric', month: '2-digit', day: '2-digit' })}
+                                {blogs.Category} - {blogs.timestamp.toDate().toLocaleDateString("en-GB", {
+                                year: 'numeric',
+                                month: '2-digit',
+                                day: '2-digit'
+                            })}
                             </p>
                             <img className={styles.picture}
                                  src={blogs.ImageServer}
@@ -60,8 +62,7 @@ const Blogs = () => {
                 loadMoreBlogs()
                 setShowButton(false)
             }}
-               className={styles[showButton ? "load-text" : "hidden"]
-               }>
+               className={styles[showButton ? "load-text" : "hidden"]}>
                 Meer berichten laden ...</p>
         </div>
     )

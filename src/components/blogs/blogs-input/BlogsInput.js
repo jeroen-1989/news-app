@@ -14,9 +14,10 @@ const BlogsInput = () => {
 
     let categories = [
         {label: "Algemeen", value: "Algemeen"},
-        {label: "Sport", value: "Sport"},
+        {label: "Gemeenteberichten", value: "Gemeenteberichten"},
+        {label: "Human interest", value: "Human interest"},
         {label: "Politiek", value: "Politiek"},
-        {label: "Human interest", value: "Human interest"}
+        {label: "Sport", value: "Sport"}
     ]
 
     const upload = () => {
@@ -55,7 +56,7 @@ const BlogsInput = () => {
     const routeChange = () => {
         setTimeout(() => {
             history.push("/")
-        }, 2000);
+        }, 500);
     }
 
     return (

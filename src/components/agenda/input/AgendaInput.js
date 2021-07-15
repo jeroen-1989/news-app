@@ -21,24 +21,23 @@ const AgendaInput = () => {
                 Location: location
             })
             .catch((error) => {
-                console.log("Er is iets foutgegaan: ", error)
+                console.log("Er is iets fout gegaan: ", error)
             });
     }
 
     const history = useHistory()
     const routeChange = () => {
         setTimeout(() => {
-            history.push('/')
-        }, 2000)
+            history.push("/")
+        }, 500)
     }
 
-    let today = new Date()
-    const dd = String(today.getDate())
-        .padStart(2, '0')
-    const mm = String(today.getMonth() + 1)
-        .padStart(2, '0')
-    const yyyy = today.getFullYear()
-    today = yyyy + '-' + mm + '-' + dd
+    const dd = String(new Date().getDate())
+        .padStart(2, "0")
+    const mm = String(new Date().getMonth() + 1)
+        .padStart(2, "0")
+    const yyyy = new Date().getFullYear()
+    const today = yyyy + '-' + mm + '-' + dd
 
     return (
         <div className={styles.container}>
@@ -57,7 +56,6 @@ const AgendaInput = () => {
                 <input className={styles.input}
                        type="date"
                        min={today}
-                       max="2022-12-31"
                        required
                        onChange={(e) => {
                            setDate(e.target.value)

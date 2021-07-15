@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import styles from "./Editorial.module.css"
 import {firestore} from "../../firebase/firebase"
 
@@ -12,20 +12,17 @@ function Editorial() {
         setEditorialCount(editorial.length)
     }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            await firestore.collection("editorial")
-                .orderBy("timestamp", "desc")
-                .onSnapshot(function (querySnapshot) {
-                    querySnapshot.forEach(function (editorial) {
-                        items.push({key: editorial.id, ...editorial.data()})
-                    })
-                    setEditorial(items)
+    const fetchData = async () => {
+        await firestore.collection("editorial")
+            .orderBy("timestamp", "desc")
+            .onSnapshot(function (querySnapshot) {
+                querySnapshot.forEach(function (editorial) {
+                    items.push({key: editorial.id, ...editorial.data()})
                 })
-        }
-        fetchData()
-    }, []) //eslint-disable-line react-hooks/exhaustive-deps
-
+                setEditorial(items)
+            })
+    }
+    fetchData()
 
     return (
         <div className={styles.container}>
@@ -44,7 +41,12 @@ function Editorial() {
                                 {editorial.Title}
                             </h2>
                             <p className={styles.category}>
-                                {editorial.Category} - {editorial.timestamp.toDate().toLocaleDateString("en-GB", { year: 'numeric', month: '2-digit', day: '2-digit' })}
+                                {editorial.Category} - {editorial.timestamp.toDate()
+                                .toLocaleDateString("en-GB", {
+                                    year: 'numeric',
+                                    month: '2-digit',
+                                    day: '2-digit'
+                                })}
                             </p>
                             <img className={styles.image}
                                  src={editorial.ImageServer}

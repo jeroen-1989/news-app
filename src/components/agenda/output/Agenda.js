@@ -10,17 +10,14 @@ function Agenda() {
         setAgendaCount(agenda.length)
     }
 
-    let today = new Date()
-    const dd = String(today.getDate())
-        .padStart(2, "0")
-    const mm = String(today.getMonth() + 1)
-        .padStart(2, "0")
-    const yyyy = today.getFullYear()
-    today = yyyy + "-" + mm + "-" + dd
+    const dd = String(new Date().getDate()).padStart(2, "0")
+    const mm = String(new Date().getMonth() + 1).padStart(2, "0")
+    const yyyy = new Date().getFullYear()
+    const today = yyyy + "-" + mm + "-" + dd
 
     useEffect(() => {
-        const fetchData = () => {
-            firestore.collection("agenda")
+        const fetchData = async () => {
+            await firestore.collection("agenda")
                 .orderBy("Date", "asc")
                 .where("Date", ">=", today)
                 .get()
@@ -32,7 +29,7 @@ function Agenda() {
                 })
         }
         fetchData()
-    }, []) //eslint-disable-line react-hooks/exhaustive-deps
+    }, [today] )
 
     return (
         <div className={showButton ? `${styles.container} ${styles.small}` : styles.container}>
