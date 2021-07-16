@@ -41,14 +41,17 @@ const Blogs = () => {
                             <h4 className={styles.head}>
                                 {blogs.Title}
                             </h4>
-                            <p className={styles.category}>
-                                {blogs.Category} - {blogs.timestamp.toDate()
-                                .toLocaleDateString("en-GB", {
-                                year: 'numeric',
-                                month: '2-digit',
-                                day: '2-digit'
-                            })}
-                            </p>
+                            <div className={styles["category-container"]}>
+                                <p className={styles.category}>{blogs.Category} - </p>
+                                <p className={styles.category}>{blogs.timestamp.toDate()
+                                    .toLocaleDateString("en-GB", {
+                                        year: 'numeric',
+                                        month: '2-digit',
+                                        day: '2-digit'
+                                    })}</p>
+
+                                <p className={styles.category}> - Geschreven door: {blogs.Author}</p>
+                            </div>
                             <img className={styles.picture}
                                  src={blogs.ImageServer}
                                  alt=""/>
@@ -66,7 +69,7 @@ const Blogs = () => {
                 loadMoreBlogs()
                 setShowButton(false)
             }}
-               className={styles[showButton ? "load-text" : "hidden"]}>
+                                    className={styles[showButton ? "load-text" : "hidden"]}>
                 Meer berichten laden ...</p>}
         </div>
     )

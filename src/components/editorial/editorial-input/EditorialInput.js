@@ -6,6 +6,7 @@ import {useHistory, Link} from "react-router-dom"
 const EditorialInput = () => {
     const [title, setTitle] = useState("")
     const [category, setCategory] = useState("Algemeen")
+    const [author, setAuthor] = useState("")
     const [image, setImage] = useState("")
     const [caption, setCaption] = useState("")
     const [lead, setLead] = useState("")
@@ -43,6 +44,7 @@ const EditorialInput = () => {
         firestore.collection("editorial").add({
             Title: title,
             Category: category,
+            Author: author,
             ImageServer: url,
             Caption: caption,
             Quote: quote,
@@ -119,16 +121,25 @@ const EditorialInput = () => {
                     </>
                 }
 
-                <select className={styles.category}
-                        onChange={(e) => {
-                            setCategory(e.target.value)
-                        }}>
-                    {categories.map((category) =>
-                        <option value={category.value}>
-                            {category.label}
-                        </option>
-                    )}
-                </select>
+                <div className={styles["category-container"]}>
+                    <select className={styles.category}
+                            onChange={(e) => {
+                                setCategory(e.target.value)
+                            }}>
+                        {categories.map((category) =>
+                            <option value={category.value}>
+                                {category.label}
+                            </option>
+                        )}
+                    </select>
+                    <input className={styles.author}
+                           type="text"
+                           placeholder="Geschreven door ..."
+                           required
+                           onChange={(e) => {
+                               setAuthor(e.target.value)
+                           }}/>
+                </div>
                 <textarea className={styles.lead}
                           placeholder="Typ hier uw inleiding ..."
                           onChange={(e) => {
@@ -158,7 +169,8 @@ const EditorialInput = () => {
                 <button className={styles.button}
                         type="submit"
                         onClick={() => {
-                            title ? routeChange() : setButtonText("Typ minimaal een titel ...")
+                            title && author ? routeChange()
+                                : setButtonText("Niet alle verplichte velden zijn ingevuld ...")
                         }}>
                     {buttonText}
                 </button>

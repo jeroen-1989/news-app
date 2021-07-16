@@ -6,6 +6,7 @@ import {useHistory, Link} from "react-router-dom"
 const BlogsInput = () => {
     const [title, setTitle] = useState("")
     const [category, setCategory] = useState("Algemeen")
+    const [author, setAuthor] = useState("")
     const [image, setImage] = useState("")
     const [lead, setLead] = useState("")
     const [body, setBody] = useState("")
@@ -33,12 +34,13 @@ const BlogsInput = () => {
             });
     }
 
-    const sub = (e) => {
+    const sendToFirestore = (e) => {
         e.preventDefault()
 
         firestore.collection("blogs").add({
             Title: title,
             Category: category,
+            Author: author,
             Lead: lead,
             Body: body,
             timestamp: timestamp,
@@ -66,9 +68,8 @@ const BlogsInput = () => {
             </h2>
             <form className={styles.form}
                   onSubmit={(event) => {
-                      sub(event)
+                      sendToFirestore(event)
                   }}>
-
 
                 <input className={styles.head}
                        type="text"
@@ -99,16 +100,25 @@ const BlogsInput = () => {
                      onChange={(e) => {
                          url(e.target.value)
                      }} src={url}/>
-                <select className={styles.category}
-                    onChange={(e) => {
-                        setCategory(e.target.value)
-                    }}>
-                    {categories.map((category) =>
-                        <option value={category.value}>
-                            {category.label}
-                        </option>
-                    )}
-                </select>
+                <div className={styles["category-container"]}>
+                    <select className={styles.category}
+                            onChange={(e) => {
+                                setCategory(e.target.value)
+                            }}>
+                        {categories.map((category) =>
+                            <option value={category.value}>
+                                {category.label}
+                            </option>
+                        )}
+                    </select>
+                    <input className={styles.author}
+                           type="text"
+                           placeholder="Geschreven door ..."
+                           required
+                           onChange={(e) => {
+                               setAuthor(e.target.value)
+                           }}/>
+                </div>
                 <textarea className={styles.lead}
                           placeholder="Typ hier uw inleiding ..."
                           onChange={(e) => {
@@ -122,7 +132,8 @@ const BlogsInput = () => {
                 <button className={styles.button}
                         type="submit"
                         onClick={() => {
-                            title ? routeChange() : setButtonText("Typ minimaal een titel ...")
+                            title && author ? routeChange()
+                                : setButtonText("Niet alle verplichte velden zijn ingevuld ...")
                         }}>
                     {buttonText}
                 </button>

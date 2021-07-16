@@ -44,14 +44,17 @@ function Editorial() {
                             <h2 className={styles.title}>
                                 {editorial.Title}
                             </h2>
-                            <p className={styles.category}>
-                                {editorial.Category} - {editorial.timestamp.toDate()
-                                .toLocaleDateString("en-GB", {
-                                    year: 'numeric',
-                                    month: '2-digit',
-                                    day: '2-digit'
-                                })}
-                            </p>
+                            <div className={styles["category-container"]}>
+                                <p className={styles.category}>{editorial.Category} - </p>
+                                <p className={styles.category}>{editorial.timestamp.toDate()
+                                    .toLocaleDateString("en-GB", {
+                                        year: 'numeric',
+                                        month: '2-digit',
+                                        day: '2-digit'
+                                    })}</p>
+
+                                <p className={styles.category}> - Geschreven door: {editorial.Author}</p>
+                            </div>
                             <img className={styles.image}
                                  src={editorial.ImageServer}
                                  alt=""/>
