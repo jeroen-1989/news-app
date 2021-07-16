@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from "react"
 import styles from "./Editorial.module.css"
-import {firestore} from "../../firebase/firebase"
-import {CountContext} from "../../context/CountProvider";
+import {firestore} from "../../../firebase/firebase"
+import {CountContext} from "../../../context/CountProvider";
 
 function Editorial() {
     const [editorial, setEditorial] = useState([])
@@ -45,22 +45,26 @@ function Editorial() {
                                 {editorial.Title}
                             </h2>
                             <div className={styles["category-container"]}>
-                                <p className={styles.category}>{editorial.Category} - </p>
+                                <p className={styles.category}>{editorial.Category}</p>
+                                <p className={styles.category}>•</p>
                                 <p className={styles.category}>{editorial.timestamp.toDate()
                                     .toLocaleDateString("en-GB", {
                                         year: 'numeric',
                                         month: '2-digit',
                                         day: '2-digit'
                                     })}</p>
-
-                                <p className={styles.category}> - Geschreven door: {editorial.Author}</p>
+                                <p className={styles.category}>•</p>
+                                <p className={styles.category}>Auteur: {editorial.Author}</p>
                             </div>
                             <img className={styles.image}
                                  src={editorial.ImageServer}
                                  alt=""/>
-                            <p className={styles.caption}>
+                            {
+                                editorial.Caption &&
+                                <p className={styles.caption}>
                                 {editorial.Caption}
                             </p>
+                            }
                             <p className={styles.lead}>
                                 {editorial.Lead}
                             </p>
@@ -68,15 +72,24 @@ function Editorial() {
                                 {editorial.Quote}
                             </h4>
                             <div className={styles.body}>
-                                <p className={styles.paragraph}>
-                                    {editorial.Paragraph1}
-                                </p>
-                                <p className={styles.paragraph}>
-                                    {editorial.Paragraph2}
-                                </p>
-                                <p className={styles.paragraph}>
+                                {
+                                    editorial.Paragraph1 &&
+                                    <p className={styles["paragraph-one"]}>
+                                        {editorial.Paragraph1}
+                                    </p>
+                                }
+                                {
+                                    editorial.Paragraph2 &&
+                                    <p className={styles["paragraph-two"]}>
+                                        {editorial.Paragraph2}
+                                    </p>
+                                }
+                                {
+                                    editorial.Paragraph3 &&
+                                    <p className={styles["paragraph-three"]}>
                                     {editorial.Paragraph3}
                                 </p>
+                                }
                             </div>
 
                         </article>
@@ -86,8 +99,8 @@ function Editorial() {
                 loadMoreEditorials()
                 setShowButton(false)
             }}
-               className={styles[showButton ? "load-text" : "hidden"]
-               }>
+                                        className={styles[showButton ? "load-text" : "hidden"]
+                                        }>
                 Meer berichten laden ...</p>}
         </div>
 

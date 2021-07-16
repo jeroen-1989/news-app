@@ -16,6 +16,8 @@
 }
 
 .title {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     font-family: Georgia, serif;
     text-align: center;
     padding: 10px;
@@ -81,6 +83,10 @@
 
     .title {
         background: none;
+    }
+
+    .today {
+        color: #940202;
     }
 
     .event, .content, .load-text {

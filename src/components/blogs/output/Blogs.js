@@ -1,7 +1,7 @@
-import {firestore} from "../../firebase/firebase"
+import {firestore} from "../../../firebase/firebase"
 import React, {useState, useEffect, useContext} from "react"
 import styles from "./Blogs.module.css"
-import {CountContext} from "../../context/CountProvider";
+import {CountContext} from "../../../context/CountProvider";
 
 const Blogs = () => {
     const {blogsCount, setBlogsCount} = useContext(CountContext)
@@ -42,25 +42,35 @@ const Blogs = () => {
                                 {blogs.Title}
                             </h4>
                             <div className={styles["category-container"]}>
-                                <p className={styles.category}>{blogs.Category} - </p>
+                                <p className={styles.category}>{blogs.Category}</p>
+                                <p className={styles.category}>•</p>
                                 <p className={styles.category}>{blogs.timestamp.toDate()
                                     .toLocaleDateString("en-GB", {
                                         year: 'numeric',
                                         month: '2-digit',
                                         day: '2-digit'
                                     })}</p>
-
-                                <p className={styles.category}> - Geschreven door: {blogs.Author}</p>
+                                <p className={styles.category}>•</p>
+                                <p className={styles.category}>Auteur: {blogs.Author}</p>
                             </div>
-                            <img className={styles.picture}
-                                 src={blogs.ImageServer}
-                                 alt=""/>
-                            <p className={styles.paragraph}>
-                                {blogs.Lead}
-                            </p>
-                            <p className={styles.text}>
-                                {blogs.Body}
-                            </p>
+                            {
+                                blogs.ImageServer &&
+                                <img className={styles.picture}
+                                     src={blogs.ImageServer}
+                                     alt=""/>
+                            }
+                            {
+                                blogs.Lead &&
+                                <p className={styles.paragraph}>
+                                    {blogs.Lead}
+                                </p>
+                            }
+                            {
+                                blogs.Body &&
+                                <p className={styles.text}>
+                                    {blogs.Body}
+                                </p>
+                            }
                         </article>
                     </div>
                 ))
