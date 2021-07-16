@@ -1,28 +1,32 @@
-import React, {useState} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import styles from "./Editorial.module.css"
 import {firestore} from "../../firebase/firebase"
+import {CountContext} from "../../context/CountProvider";
 
 function Editorial() {
     const [editorial, setEditorial] = useState([])
     const [showButton, setShowButton] = useState(true)
-    const [editorialCount, setEditorialCount] = useState(2)
+    const {editorialCount, setEditorialCount} = useContext(CountContext)
     const items = []
 
     const loadMoreEditorials = () => {
         setEditorialCount(editorial.length)
     }
 
-    const fetchData = async () => {
-        await firestore.collection("editorial")
-            .orderBy("timestamp", "desc")
-            .onSnapshot(function (querySnapshot) {
-                querySnapshot.forEach(function (editorial) {
-                    items.push({key: editorial.id, ...editorial.data()})
+    useEffect(() => {
+        const fetchData = async () => {
+            await firestore.collection("editorial")
+                .orderBy("timestamp", "desc")
+                .onSnapshot(function (querySnapshot) {
+                    querySnapshot.forEach(function (editorial) {
+                        items.push({key: editorial.id, ...editorial.data()})
+                    })
+                    setEditorial(items)
                 })
-                setEditorial(items)
-            })
-    }
-    fetchData()
+        }
+        fetchData()
+    }, [items])
+
 
     return (
         <div className={styles.container}>
@@ -51,8 +55,12 @@ function Editorial() {
                             <img className={styles.image}
                                  src={editorial.ImageServer}
                                  alt=""/>
-                            <p className={styles.caption}>{editorial.Caption}</p>
-                            <p className={styles.lead}>{editorial.Lead}</p>
+                            <p className={styles.caption}>
+                                {editorial.Caption}
+                            </p>
+                            <p className={styles.lead}>
+                                {editorial.Lead}
+                            </p>
                             <h4 className={styles.quote}>
                                 {editorial.Quote}
                             </h4>
@@ -71,13 +79,13 @@ function Editorial() {
                         </article>
                     </div>))}
 
-            <p onClick={() => {
+            {editorialCount === 2 && <p onClick={() => {
                 loadMoreEditorials()
                 setShowButton(false)
             }}
                className={styles[showButton ? "load-text" : "hidden"]
                }>
-                Meer berichten laden ...</p>
+                Meer berichten laden ...</p>}
         </div>
 
     )

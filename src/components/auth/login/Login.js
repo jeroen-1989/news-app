@@ -1,13 +1,14 @@
-import React, {useState} from "react"
+import React, {useContext, useState} from "react"
 import {firebaseConfig} from "../../../firebase/firebase"
 import styles from "./Login.module.css"
+import {UserContext} from "../../../context/UserProvider"
 
 function Login() {
     const [loading, toggleLoading] = useState(false)
     const [error, setError] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [setUser] = useState()
+    const setUser = useContext(UserContext)
 
     async function onSubmit(e) {
 

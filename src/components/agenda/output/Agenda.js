@@ -1,11 +1,11 @@
 import {firestore} from "../../../firebase/firebase"
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import styles from "./Agenda.module.css"
+import {CountContext} from "../../../context/CountProvider";
 
 function Agenda() {
     const [agenda, setAgenda] = useState([])
-    const [showButton, setShowButton] = useState(true)
-    const [agendaCount, setAgendaCount] = useState(2)
+    const {agendaCount, setAgendaCount, showButton, setShowButton} = useContext(CountContext)
     const loadMoreAgenda = () => {
         setAgendaCount(agenda.length)
     }
@@ -45,13 +45,13 @@ function Agenda() {
                     </div>
                 ))
             }
-            <p onClick={() => {
+            {agendaCount === 2 && <p onClick={() => {
                 loadMoreAgenda()
                 setShowButton(false)
             }}
                className={styles[showButton ? "load-text" : "hidden"]
                }>
-                Meer agendapunten laden ...</p>
+                Meer agendapunten laden ...</p>}
 
         </div>
     )

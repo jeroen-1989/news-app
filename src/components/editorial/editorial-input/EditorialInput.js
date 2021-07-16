@@ -108,7 +108,7 @@ const EditorialInput = () => {
                         <img className={styles.preview}
                              alt=""
                              onChange={(e) => {
-                                 url(e.target.value)
+                                 setUrl(e.target.value)
                              }} src={url}/>
                         <input className={styles.caption}
                                type="text"
