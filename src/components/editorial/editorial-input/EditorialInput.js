@@ -142,11 +142,13 @@ const EditorialInput = () => {
                 </div>
                 <textarea className={styles.lead}
                           placeholder="Typ hier uw inleiding ..."
+                          required
                           onChange={(e) => {
                               setLead(e.target.value)
                           }}/>
                 <input className={styles.head}
                        type="text"
+                       required
                        placeholder="Typ hier een quote ..."
                        onChange={(e) => {
                            setQuote(e.target.value)
@@ -169,7 +171,7 @@ const EditorialInput = () => {
                 <button className={styles.button}
                         type="submit"
                         onClick={() => {
-                            title && author ? routeChange()
+                            title && author && url && lead && quote ? routeChange()
                                 : setButtonText("Niet alle verplichte velden zijn ingevuld ...")
                         }}>
                     {buttonText}
