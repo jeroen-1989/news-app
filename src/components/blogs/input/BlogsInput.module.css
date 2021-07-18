@@ -31,7 +31,7 @@
     color: #262626;
 }
 
-.head, .lead, .text, .button, .category, .author {
+.head, .lead, .text, .category, .author {
     padding: 5px;
     border-radius: 5px;
     background: #c7e2e5;
@@ -57,7 +57,7 @@
     height: 29px;
 }
 
-.head, .lead, .text, .button {
+.head, .lead, .text {
     width: 40vw;
 }
 
@@ -104,7 +104,7 @@
     margin: 10px 0 20px 0;
 }
 
-.button, .cancel {
+.cancel {
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -115,15 +115,11 @@
     transition: background 2s;
 }
 
-.button {
-    height: 25px;
-}
-
-.button:hover, .cancel:hover {
+.cancel:hover {
     background: #f10000 radial-gradient(circle, transparent 1%, #f10000 1%) center/15000%;
 }
 
-.button:active, .cancel:active {
+.cancel:active {
     background-color: #e94646;
     background-size: 100%;
     transition: background 0s;

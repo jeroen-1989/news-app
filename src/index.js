@@ -4,17 +4,15 @@ import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 import {BrowserRouter as Router} from "react-router-dom"
 import UserProvider from "./context/UserProvider"
-import CountProvider from "./context/CountProvider"
+import TextsCountProvider from "./context/TextsCountProvider"
 
 ReactDOM.render(
   <React.StrictMode>
-
       <Router>
-
           <UserProvider>
-              <CountProvider>
+              <TextsCountProvider>
              <App />
-              </CountProvider>
+              </TextsCountProvider>
           </UserProvider>
       </Router>
   </React.StrictMode>,

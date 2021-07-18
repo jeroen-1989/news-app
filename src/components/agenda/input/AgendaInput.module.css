@@ -51,7 +51,7 @@
     font-family: helvetica, sans-serif;
 }
 
-.button, .cancel {
+.cancel {
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -62,17 +62,11 @@
     transition: background 2s;
 }
 
-.button {
-    width: 40vw;
-    height: 25px;
-    background-color: #940202;
+.cancel:hover {
+    background: #f10000 radial-gradient(circle, transparent 1%, #f10000 1%) center/15000%;
 }
 
-.button:hover, .cancel:hover {
-    background: #940202 radial-gradient(circle, transparent 1%, #940202 1%) center/15000%;
-}
-
-.button:active, .cancel:active {
+.cancel:active {
     background-color: #e94646;
     background-size: 100%;
     transition: background 0s;

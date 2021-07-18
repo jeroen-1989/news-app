@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import {firestore} from "../../../firebase/firebase"
 import {useHistory, Link} from "react-router-dom"
+import Button from "../../helpers/Button"
 import styles from "./AgendaInput.module.css"
 
 const AgendaInput = () => {
@@ -40,7 +41,7 @@ const AgendaInput = () => {
     const today = yyyy + '-' + mm + '-' + dd
 
     return (
-        <div className={styles.container}>
+        <main className={styles.container}>
             <h2 className={styles.header}>Voeg uw agendapunt hieronder toe:</h2>
             <form className={styles.form}
                   onSubmit={(event) => {
@@ -71,20 +72,20 @@ const AgendaInput = () => {
                        onChange={(e) => {
                            setLocation(e.target.value)
                        }}/>
-                <button className={styles.button}
+                <Button className={styles.button}
                         type="submit"
-                        onClick={() => {event && date && location ?
+                        clickHandler={() => {event && date && location ?
                             routeChange()
                             : setToggleText("Voer de vereiste velden in ...")
                         }}>
                     {toggleText}
-                </button>
+                </Button>
             </form>
             <Link className={styles.cancel}
                   to="/">
                 Annuleren
             </Link>
-        </div>
+        </main>
     )
 }
 

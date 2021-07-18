@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react"
 import {firebaseConfig} from "../../../firebase/firebase"
 import styles from "./Login.module.css"
 import {UserContext} from "../../../context/UserProvider"
+import Button from "../../helpers/Button"
 
 function Login() {
     const [loading, toggleLoading] = useState(false)
@@ -44,10 +45,10 @@ function Login() {
                    name="password"
                    value={password}/>
 
-            <button className={styles.button}
+            <Button
                     type="submit">
                 {loading ? "Versturen..." : "Login"}
-            </button>
+            </Button>
 
         </form>
 

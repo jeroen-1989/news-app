@@ -1,7 +1,7 @@
 import {firestore} from "../../../firebase/firebase"
 import React, {useState, useEffect, useContext} from "react"
 import styles from "./Blogs.module.css"
-import {CountContext} from "../../../context/CountProvider";
+import {CountContext} from "../../../context/TextsCountProvider";
 
 const Blogs = () => {
     const {blogsCount, setBlogsCount} = useContext(CountContext)
@@ -28,20 +28,20 @@ const Blogs = () => {
     }, [items])
 
     return (
-        <div className={styles.container}>
+        <main className={styles.container}>
             {
                 blogs.slice(0, blogsCount).map((blogs) => (
 
-                    <div className={styles["output-container"]}>
+                    <article className={styles["output-container"]}>
                         <input className={styles["article-btn"]} type="checkbox"/>
-                        <label className={styles["article-icon"]}>
+                        <div className={styles["article-icon"]}>
                             <span className={styles.icon}/>
-                        </label>
-                        <article className={styles["article-container"]}>
+                        </div>
+                        <section className={styles["article-container"]}>
                             <h4 className={styles.head}>
                                 {blogs.Title}
                             </h4>
-                            <div className={styles["category-container"]}>
+                            <section className={styles["category-container"]}>
                                 <p className={styles.category}>{blogs.Category}</p>
                                 <p className={styles.category}>•</p>
                                 <p className={styles.category}>{blogs.timestamp.toDate()
@@ -52,7 +52,7 @@ const Blogs = () => {
                                     })}</p>
                                 <p className={styles.category}>•</p>
                                 <p className={styles.category}>Auteur: {blogs.Author}</p>
-                            </div>
+                            </section>
                             {
                                 blogs.ImageServer &&
                                 <img className={styles.picture}
@@ -71,17 +71,17 @@ const Blogs = () => {
                                     {blogs.Body}
                                 </p>
                             }
-                        </article>
-                    </div>
+                        </section>
+                    </article>
                 ))
             }
-            {blogsCount === 5 && <p onClick={() => {
+            {blogsCount === 5 && <button onClick={() => {
                 loadMoreBlogs()
                 setShowButton(false)
             }}
                                     className={styles[showButton ? "load-text" : "hidden"]}>
-                Meer berichten laden ...</p>}
-        </div>
+                Meer berichten laden ...</button>}
+        </main>
     )
 }
 

@@ -15,11 +15,11 @@ function Dropdown() {
     const handleClickTwo = () => toggleShowLogin(!showLogin)
 
     return (
-        <div>
+
+        <main>
             {
                 user ?
                     <nav>
-
                         <input
                             className={styles["menu-btn"]}
                             type="checkbox"
@@ -27,9 +27,9 @@ function Dropdown() {
                             onClick={handleClick}
                         />
 
-                        <label className={styles["menu-icon"]}>
+                        <div className={styles["menu-icon"]}>
                             <span className={styles["nav-icon"]}/>
-                        </label>
+                        </div>
 
                         <ul className={styles.menu}>
                             <NavLink
@@ -38,29 +38,33 @@ function Dropdown() {
                                 to="/">
                                 <li>Home</li>
                             </NavLink>
+
                             <NavLink
                                 onClick={handleClick}
                                 className={styles["nav-link"]}
                                 to="/add-story">
                                 <li>Bericht toevoegen</li>
                             </NavLink>
+
                             <NavLink
                                 onClick={handleClick}
                                 className={styles["nav-link"]}
                                 to="/add-main-story">
                                 <li>Hoofdbericht toevoegen</li>
                             </NavLink>
+
                             <NavLink
                                 onClick={handleClick}
                                 className={styles["nav-link"]}
                                 to="/agenda">
                                 <li>Agendapunt toevoegen</li>
                             </NavLink>
+
                             <LogOut onClick={handleClickTwo}>Log out</LogOut>
                         </ul>
                     </nav>
                     :
-                    <div
+                    <button
                         className={styles["login-btn"]}
                         onClick={() => toggleShowLogin(true)}>
                         {
@@ -68,12 +72,12 @@ function Dropdown() {
                                 <p>Registreren</p>
                                 : <p>Login</p>
                         }
-                    </div>
+                    </button>
             }
 
             {
                 !user && showLogin ?
-                    <div className={styles["login-container"]}>
+                    <section className={styles["login-container"]}>
                         {
                             register ?
                                 <>
@@ -92,10 +96,9 @@ function Dropdown() {
                         }
                         <p onClick={() => toggleShowLogin(false)} className={styles.cancel}>Annuleren ...</p>
 
-                    </div> : undefined
+                    </section> : undefined
             }
-
-        </div>
+        </main>
     )
 }
 

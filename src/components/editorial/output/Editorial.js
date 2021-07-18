@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from "react"
 import styles from "./Editorial.module.css"
 import {firestore} from "../../../firebase/firebase"
-import {CountContext} from "../../../context/CountProvider";
+import {CountContext} from "../../../context/TextsCountProvider";
 
 function Editorial() {
     const [editorial, setEditorial] = useState([])
@@ -29,22 +29,22 @@ function Editorial() {
 
 
     return (
-        <div className={styles.container}>
+        <main className={styles.container}>
             {
                 editorial.slice(0, editorialCount).map((editorial) => (
-                    <div className={styles["output-container"]}>
+                    <article className={styles["output-container"]}>
                         <input className={styles["article-btn"]} type="checkbox"/>
 
-                        <label className={styles["article-icon"]}>
+                        <div className={styles["article-icon"]}>
                             <span className={styles.icon}/>
-                        </label>
+                        </div>
 
-                        <article className={styles["article-container"]}>
+                        <section className={styles["article-container"]}>
 
                             <h2 className={styles.title}>
                                 {editorial.Title}
                             </h2>
-                            <div className={styles["category-container"]}>
+                            <section className={styles["category-container"]}>
                                 <p className={styles.category}>{editorial.Category}</p>
                                 <p className={styles.category}>•</p>
                                 <p className={styles.category}>{editorial.timestamp.toDate()
@@ -55,15 +55,15 @@ function Editorial() {
                                     })}</p>
                                 <p className={styles.category}>•</p>
                                 <p className={styles.category}>Auteur: {editorial.Author}</p>
-                            </div>
+                            </section>
                             <img className={styles.image}
                                  src={editorial.ImageServer}
                                  alt=""/>
                             {
                                 editorial.Caption &&
                                 <p className={styles.caption}>
-                                {editorial.Caption}
-                            </p>
+                                    {editorial.Caption}
+                                </p>
                             }
                             <p className={styles.lead}>
                                 {editorial.Lead}
@@ -71,7 +71,7 @@ function Editorial() {
                             <h4 className={styles.quote}>
                                 {editorial.Quote}
                             </h4>
-                            <div className={styles.body}>
+                            <section className={styles.body}>
                                 {
                                     editorial.Paragraph1 &&
                                     <p className={styles["paragraph-one"]}>
@@ -87,22 +87,22 @@ function Editorial() {
                                 {
                                     editorial.Paragraph3 &&
                                     <p className={styles["paragraph-three"]}>
-                                    {editorial.Paragraph3}
-                                </p>
+                                        {editorial.Paragraph3}
+                                    </p>
                                 }
-                            </div>
+                            </section>
 
-                        </article>
-                    </div>))}
+                        </section>
+                    </article>))}
 
-            {editorialCount === 2 && <p onClick={() => {
+            {editorialCount === 2 && <button onClick={() => {
                 loadMoreEditorials()
                 setShowButton(false)
             }}
-                                        className={styles[showButton ? "load-text" : "hidden"]
-                                        }>
-                Meer berichten laden ...</p>}
-        </div>
+                                             className={styles[showButton ? "load-text" : "hidden"]
+                                             }>
+                Meer berichten laden ...</button>}
+        </main>
 
     )
 }

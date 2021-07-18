@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext} from "react"
 import styles from "./App.module.css"
 import {Switch, Route} from "react-router-dom"
 import {UserContext} from "./context/UserProvider"
@@ -22,43 +22,42 @@ function App() {
 
             <Switch>
                 <Route exact path="/">
-                    <div className={styles["user-content"]}>
-                        <div className={styles["news-container"]}>
+                    <main className={styles["user-content"]}>
+                        <section className={styles["news-container"]}>
                             <Editorial/>
                             <Blogs/>
-                        </div>
-                        <div className={styles["agenda-container"]}>
+                        </section>
+                        <section className={styles["agenda-container"]}>
                             <Agenda/>
-                        </div>
-                    </div>
+                        </section>
+                    </main>
                 </Route>
 
                 {
                     user &&
                     <>
                         <Route path="/add-story">
-                            <div className={styles["user-content"]}>
+                            <main className={styles["user-content"]}>
                                 <BlogsInput/>
-                            </div>
+                            </main>
                         </Route>
 
                         <Route path="/add-main-story">
-                            <div className={styles["user-content"]}>
+                            <main className={styles["user-content"]}>
                                 <EditorialInput/>
-                            </div>
+                            </main>
                         </Route>
 
                         <Route path="/agenda">
-                            <div className={styles["user-content"]}>
-                                <div>
+                            <main className={styles["user-content"]}>
                                     <AgendaInput/>
-                                </div>
-                            </div>
+                            </main>
                         </Route>
                     </>
                 }
 
             </Switch>
+
             <Footer/>
         </>
     )

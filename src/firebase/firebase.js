@@ -1,5 +1,5 @@
-import firebase from 'firebase';
-import 'firebase/auth';
+import firebase from 'firebase'
+import 'firebase/auth'
 
 const firebaseConfig = firebase.initializeApp(
     {
@@ -14,9 +14,16 @@ const firebaseConfig = firebase.initializeApp(
     }
 )
 
-const firestore = firebase.firestore();
-const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-const auth = firebase.auth();
-const imageStorage = firebase.storage();
+const firestore = firebase.firestore()
+const timestamp = firebase.firestore.FieldValue.serverTimestamp()
+const auth = firebase.auth()
+const imageStorage = firebase.storage()
 
-export {firebaseConfig, firestore, timestamp, auth, imageStorage};
+export
+{
+    firebaseConfig,
+    firestore,
+    timestamp,
+    auth,
+    imageStorage
+}

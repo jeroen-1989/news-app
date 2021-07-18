@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import {firebaseConfig} from "../../../firebase/firebase"
 import styles from "./Register.module.css"
+import Button from "../../helpers/Button"
 
 function Register() {
 
@@ -50,11 +51,11 @@ function Register() {
                    required
                    value={password}/>
 
-            <button className={styles.button}
+            <Button
                     type='submit'
                     disabled={loading}>
                 {loading ? 'Versturen...' : 'Registreren'}
-            </button>
+            </Button>
 
             {
                 registerSuccess &&

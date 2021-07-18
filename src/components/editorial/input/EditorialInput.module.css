@@ -1,4 +1,4 @@
-.input-container {
+.editorial-container {
     text-align: center;
     display: flex;
     align-items: center;
@@ -31,7 +31,7 @@
     color: #262626;
 }
 
-.head, .lead, .text, .button, .category, .author {
+.head, .lead, .text, .last-text, .category, .author {
     padding: 5px;
     border-radius: 5px;
     background: #c7e2e5;
@@ -57,7 +57,7 @@
     height: 29px;
 }
 
-.head, .lead, .text, .button {
+.head, .lead, .text, .last-text {
     width: 40vw;
 }
 
@@ -65,15 +65,19 @@
     margin-bottom: 10px;
 }
 
+.last-text {
+    margin-bottom: 30px;
+}
+
 .lead {
     height: 80px;
 }
 
-.text {
+.text, .last-text {
     height: 150px;
 }
 
-.head:focus, .caption:focus, .lead:focus, .text:focus {
+.head:focus, .caption:focus, .lead:focus, .text:focus, .last-text:focus {
     background: white;
 }
 
@@ -89,7 +93,7 @@
 
 .uploader {
     margin-top: 20px;
-    margin-bottom: -10px;
+    margin-bottom: 10px;
 }
 
 .reminder {
@@ -99,7 +103,7 @@
     margin: 10px 0;
 }
 
-.button, .cancel {
+.cancel {
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -110,17 +114,11 @@
     transition: background 2s;
 }
 
-.button {
-    width: 40vw;
-    height: 25px;
-    margin-top: 20px;
-}
-
-.button:hover, .cancel:hover {
+.cancel:hover {
     background: #f10000 radial-gradient(circle, transparent 1%, #f10000 1%) center/15000%;
 }
 
-.button:active, .cancel:active {
+.cancel:active {
     background-color: #e94646;
     background-size: 100%;
     transition: background 0s;

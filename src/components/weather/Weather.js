@@ -19,19 +19,20 @@ function Weather() {
 
         fetchData()
     }, [])
-    console.log(weatherData)
+
 
     return (
         <>
-            {weatherData &&
-            <div className={styles.container}>
-                <p className={styles.left}>Het weer in Schijndel: </p>
-                <svg className={styles.icons}>{WeatherIcons(weatherData.weather[0].main)}</svg>
-                <p className={styles.right}>{Math.round(weatherData.main.temp)} °C • Luchtvochtigheid: {weatherData.main.humidity}%</p>
-                <div className={styles.rest}/>
-            </div>}
+            {
+                weatherData &&
+                <main className={styles["weather-container"]}>
+                    <p className={styles.left}>Het weer in Schijndel: </p>
+                    <svg className={styles.icons}>{WeatherIcons(weatherData.weather[0].main)}</svg>
+                    <p className={styles.right}>{Math.round(weatherData.main.temp)} °C • Luchtvochtigheid: {weatherData.main.humidity}%</p>
+                    <div className={styles.rest}/>
+                </main>
+            }
         </>
-
     )
 }
 

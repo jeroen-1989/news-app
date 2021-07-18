@@ -1,7 +1,7 @@
 import {firestore} from "../../../firebase/firebase"
 import React, {useState, useEffect, useContext} from "react"
 import styles from "./Agenda.module.css"
-import {CountContext} from "../../../context/CountProvider";
+import {CountContext} from "../../../context/TextsCountProvider";
 
 function Agenda() {
     const [agenda, setAgenda] = useState([])
@@ -29,12 +29,13 @@ function Agenda() {
                 })
         }
         fetchData()
-    }, [today] )
+    }, [today])
 
     return (
-        <div className={showButton ? `${styles.container} ${styles.small}` : styles.container}>
+        <main className={showButton ? `${styles.container} ${styles.small}` : styles.container}>
             <h2 className={styles.title}>Agenda</h2>
             <p className={styles.today}>{today.split('-').reverse().join('/')}</p>
+
             {
                 agenda.slice(0, agendaCount).map((agenda) => (
                     <div className={styles.agenda}>
@@ -45,15 +46,19 @@ function Agenda() {
                     </div>
                 ))
             }
-            {agendaCount === 2 && <p onClick={() => {
-                loadMoreAgenda()
-                setShowButton(false)
-            }}
-               className={styles[showButton ? "load-text" : "hidden"]
-               }>
-                Meer agendapunten laden ...</p>}
 
-        </div>
+            {
+                agendaCount === 2 &&
+                <button onClick={() => {
+                    loadMoreAgenda()
+                    setShowButton(false)
+                }}
+                        className={styles[showButton ? "load-text" : "hidden"]
+                        }>
+                    Meer agendapunten laden ...
+                </button>
+            }
+        </main>
     )
 }
 

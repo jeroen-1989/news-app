@@ -6,25 +6,23 @@ import Dropdown from "./dropdown-menu/Dropdown"
 function Header() {
 
     return (
+        <header>
 
-        <div className={styles.container}>
-            <header className={styles.header}>
-
-                <div className={styles.logoContainer}>
+            <section className={styles["header-container"]}>
+                <div className={styles["logo-container"]}>
                     <h1 className={styles.logo}>Media</h1>
                     <h1 className={styles.lokaal}>Lokaal.</h1>
                 </div>
-
                 <Dropdown/>
+            </section>
 
-            </header>
-
-            <div className={styles["image-container"]}>
+            <section className={styles["image-container"]}>
                 <img className={styles.image} src={markt} alt={"De markt in Schijndel"}/>
-            </div>
-            <h1 className={styles.welcome}>Welkom op de website van Medialokaal</h1>
-        </div>
-    );
+                <h2 className={styles.welcome}>Welkom op de website van Medialokaal</h2>
+            </section>
+
+        </header>
+    )
 }
 
 export default Header

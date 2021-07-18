@@ -1,9 +1,9 @@
-.container {
+.weather-container {
     height: 43px;
     display: flex;
     align-items: center;
     width: 100%;
-    background-color: #f10000;
+    background: #f10000;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -32,7 +32,7 @@
 }
 
 .rest {
-    background-color: #940202;
+    background: #940202;
     flex-grow: 4;
     height: 17px;
     border-top: 2px solid #940202;

@@ -2,7 +2,7 @@ import React, {createContext, useState} from "react"
 
 export const CountContext = createContext({})
 
-function CountProvider({children}) {
+function TextsCountProvider({children}) {
 
     const [blogsCount, setBlogsCount] = useState(5)
     const [editorialCount, setEditorialCount] = useState(2)
@@ -23,4 +23,4 @@ function CountProvider({children}) {
     )
 }
 
-export default CountProvider
+export default TextsCountProvider

@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import {firestore, timestamp, imageStorage} from "../../../firebase/firebase"
 import styles from "./BlogsInput.module.css"
 import {useHistory, Link} from "react-router-dom"
+import Button from "../../helpers/Button"
 
 const BlogsInput = () => {
     const [title, setTitle] = useState("")
@@ -12,6 +13,7 @@ const BlogsInput = () => {
     const [body, setBody] = useState("")
     const [url, setUrl] = useState("")
     const [buttonText, setButtonText] = useState("Verzenden")
+    const [disable, setDisable] = useState(false)
 
     let categories = [
         {label: "Algemeen", value: "Algemeen"},
@@ -56,16 +58,19 @@ const BlogsInput = () => {
 
     const history = useHistory()
     const routeChange = () => {
+        setDisable(true)
         setTimeout(() => {
             history.push("/")
         }, 500);
     }
 
     return (
-        <div className={styles["input-container"]}>
+        <main className={styles["input-container"]}>
+
             <h2 className={styles.header}>
                 Voeg uw bericht hieronder toe:
             </h2>
+
             <form className={styles.form}
                   onSubmit={(event) => {
                       sendToFirestore(event)
@@ -78,6 +83,7 @@ const BlogsInput = () => {
                        onChange={(e) => {
                            setTitle(e.target.value)
                        }}/>
+
                 {
                     !url ?
                         <>
@@ -86,21 +92,23 @@ const BlogsInput = () => {
                                    onChange={(e) => {
                                        setImage(e.target.files[0])
                                    }}/>
-                            <button className={styles.button}
+                            <Button
                                     type="button"
-                                    onClick={image ? upload : undefined}>
+                                    clickHandler={image ? upload : undefined}>
                                 Upload afbeelding
-                            </button>
+                            </Button>
                             <p className={styles.reminder}>*Vergeet niet om op de upload-knop te drukken.</p>
                         </>
                         : undefined
                 }
+
                 <img className={styles.preview}
                      alt=""
                      onChange={(e) => {
                          url(e.target.value)
                      }} src={url}/>
-                <div className={styles["category-container"]}>
+
+                <section className={styles["category-container"]}>
                     <select className={styles.category}
                             onChange={(e) => {
                                 setCategory(e.target.value)
@@ -118,7 +126,8 @@ const BlogsInput = () => {
                            onChange={(e) => {
                                setAuthor(e.target.value)
                            }}/>
-                </div>
+                </section>
+
                 <textarea className={styles.lead}
                           placeholder="Typ hier uw inleiding ..."
                           onChange={(e) => {
@@ -129,20 +138,25 @@ const BlogsInput = () => {
                           onChange={(e) => {
                               setBody(e.target.value)
                           }}/>
-                <button className={styles.button}
+
+                <Button
                         type="submit"
-                        onClick={() => {
+                        disabled={disable}
+                        clickHandler={() => {
                             title && author ? routeChange()
                                 : setButtonText("Niet alle verplichte velden zijn ingevuld ...")
                         }}>
                     {buttonText}
-                </button>
+                </Button>
+
             </form>
+
             <Link className={styles.cancel}
                   to="/">
                 Annuleren
             </Link>
-        </div>
+
+        </main>
     );
 }
 
