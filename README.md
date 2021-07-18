@@ -1,5 +1,12 @@
 Installatiehandleiding: 
-lokale nieuws-app
+lokale nieuws-app: MediaLokaal.
+
+1) Inleiding
+2) Benodigdheden
+3) Benodigdheden eigen weathermap key
+4) Benodigdheden eigen firebase account
+
+= 1 ==========================================================================================================================================================
 
 De lokale nieuws-app MediaLokaal is een react-app gemaakt om inwoners van uw gemeente zelf
 op de website het nieuws te laten schrijven en delen. Er wordt gebruik gemaakt van firebase om de
@@ -8,17 +15,20 @@ Er wordt gebruik gemaakt van de OpenWeatherMap API om het huidige weer in Schijn
 
 ![img_1.png](img_1.png)
 
+= 2 ==========================================================================================================================================================
+
 Benodigdheden:
 - Clone mijn broncode: ($git clone {https://github.com/jeroen-1989/nieuws-app}) -> ($cd nieuws-app) -> ($npm install) -> ($npm start)
 - Installeer Axios ($npm install axios --save);
 - Installeer OpenWeatherMap ($npm install openweather-apis --save)
 - Firebase ($ npm install --save firebase)
-  - inloggegevens firebase console (firebase.google.com): accountnaam: jclaa1989@gmail.com - password: Jclaa1989
-  
+  - inloggegevens firebase console (firebase.google.com): 
+    accountnaam: jclaa1989@gmail.com 
+    password: Jclaa1989
 
+= 3 ==========================================================================================================================================================
 
-
-Benodigdheden bij eigen firebase-account en eigen weathermap API-key:
+Benodigdheden eigen weathermap API-key:
 - Een API-key van OpenWeatherMap (Current Weather Data)
     https://openweathermap.org/api
     - Registreer en log hier in en u krijgt een API-key met uitleg via de mail (het kan een paar uur duren voordat de key actief is).
@@ -26,6 +36,8 @@ Benodigdheden bij eigen firebase-account en eigen weathermap API-key:
       - De link is de volledige URI, hierin staan "Locatie: Schijndel" en "Taal: Nederlands" om de API key heen. Let dus goed op:
         begin hiermee: https://api.openweathermap.org/data/2.5/weather?q=Schijndel,nl&units=metric&& 
         plak uw API key daarachter en zet het volgende daar weer achter tegenaan: &lang=nl
+
+= 4 ==========================================================================================================================================================
         
 - Firebase/firestore voor de registratie/authenticatie en de opslag van berichten/afbeeldingen:
     - Log jezelf in;
