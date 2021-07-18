@@ -1,0 +1,27 @@
+.cancel {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: #940202;
+    outline: none;
+    background-position: center;
+    transition: background 2s;
+    text-decoration: none;
+}
+
+.cancel:hover {
+    background: #f10000 radial-gradient(circle, transparent 1%, #f10000 1%) center/15000%;
+}
+
+.cancel:active {
+    background-color: #e94646;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.cancel {
+    font-size: 8pt;
+    padding: 5px;
+    width: 100px;
+}

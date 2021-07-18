@@ -1,8 +1,9 @@
 import React, {useState} from "react"
 import {firestore} from "../../../firebase/firebase"
 import {useHistory, Link} from "react-router-dom"
-import Button from "../../helpers/Button"
 import styles from "./AgendaInput.module.css"
+import Button from "../../helpers/button/Button"
+import CancelButton from "../../helpers/cancel-button/CancelButton";
 
 const AgendaInput = () => {
     const [date, setDate] = useState("")
@@ -81,10 +82,7 @@ const AgendaInput = () => {
                     {toggleText}
                 </Button>
             </form>
-            <Link className={styles.cancel}
-                  to="/">
-                Annuleren
-            </Link>
+            <CancelButton/>
         </main>
     )
 }

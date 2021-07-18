@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import {firebaseConfig} from "../../../firebase/firebase"
 import styles from "./Register.module.css"
-import Button from "../../helpers/Button"
+import Button from "../../helpers/button/Button"
 
 function Register() {
 

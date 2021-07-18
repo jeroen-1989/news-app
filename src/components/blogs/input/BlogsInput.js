@@ -2,7 +2,8 @@ import React, {useState} from "react"
 import {firestore, timestamp, imageStorage} from "../../../firebase/firebase"
 import styles from "./BlogsInput.module.css"
 import {useHistory, Link} from "react-router-dom"
-import Button from "../../helpers/Button"
+import Button from "../../helpers/button/Button"
+import CancelButton from "../../helpers/cancel-button/CancelButton"
 
 const BlogsInput = () => {
     const [title, setTitle] = useState("")
@@ -151,10 +152,7 @@ const BlogsInput = () => {
 
             </form>
 
-            <Link className={styles.cancel}
-                  to="/">
-                Annuleren
-            </Link>
+            <CancelButton/>
 
         </main>
     );

@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react"
 import {firebaseConfig} from "../../../firebase/firebase"
 import styles from "./Login.module.css"
 import {UserContext} from "../../../context/UserProvider"
-import Button from "../../helpers/Button"
+import Button from "../../helpers/button/Button"
 
 function Login() {
     const [loading, toggleLoading] = useState(false)

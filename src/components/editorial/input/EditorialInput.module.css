@@ -131,7 +131,7 @@
 }
 
 @media screen and (max-width: 500px) {
-    .input-container {
+    .editorial-container {
         width: 90vw;
         background: rgba(241, 0, 0, 0.8);
         border: 1px solid #f10000;
@@ -145,7 +145,7 @@
         color: white;
     }
 
-    .head, .caption, .lead, .text, .button, .preview {
+    .head, .caption, .lead, .text, .last-text, .preview {
         width: 70vw;
     }
 
