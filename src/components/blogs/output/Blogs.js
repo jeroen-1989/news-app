@@ -44,12 +44,13 @@ const Blogs = () => {
                             <section className={styles["category-container"]}>
                                 <p className={styles.category}>{blogs.Category}</p>
                                 <p className={styles.category}>•</p>
-                                <p className={styles.category}>{blogs.timestamp.toDate()
+                                <time className={styles.category}>{blogs.timestamp.toDate()
                                     .toLocaleDateString("en-GB", {
-                                        year: 'numeric',
-                                        month: '2-digit',
-                                        day: '2-digit'
-                                    })}</p>
+                                        year: "numeric",
+                                        month: "2-digit",
+                                        day: "2-digit"
+                                    })}
+                                </time>
                                 <p className={styles.category}>•</p>
                                 <p className={styles.category}>Auteur: {blogs.Author}</p>
                             </section>

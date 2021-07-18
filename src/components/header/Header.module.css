@@ -38,12 +38,16 @@
     z-index: -2;
 }
 
+.image-container {
+    overflow: hidden;
+}
+
 .welcome {
     color: white;
-    margin-top: -10vh;
-    padding: 10px;
+    margin-top: -14vw;
+    padding: 20px;
     font-family: Georgia, serif;
-    font-size: 3vh;
+    font-size: 3.5vw;
 }
 
 @media screen and (max-width: 500px) {
@@ -58,7 +62,7 @@
 
     .image {
         width: 200%;
-        margin-bottom: 18px;
+        margin-bottom: -10px;
         left: -250px;
     }
 

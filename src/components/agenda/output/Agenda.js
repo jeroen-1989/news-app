@@ -34,7 +34,7 @@ function Agenda() {
     return (
         <main className={showButton ? `${styles.container} ${styles.small}` : styles.container}>
             <h2 className={styles.title}>Agenda</h2>
-            <p className={styles.today}>{today.split('-').reverse().join('/')}</p>
+            <time className={styles.today}>{today.split("-").reverse().join("/")}</time>
 
             {
                 agenda.slice(0, agendaCount).map((agenda) => (

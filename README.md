@@ -1,10 +1,12 @@
-Installatiehandleiding: lokale nieuws-app
+Installatiehandleiding: 
+lokale nieuws-app
 
 De lokale nieuws-app MediaLokaal is een react-app gemaakt om inwoners van uw gemeente zelf
 op de website het nieuws te laten schrijven en delen. Er wordt gebruik gemaakt van firebase om de
 registratie en authenticatie te regelen. Firestore wordt gebruikt om de berichten op te slaan. 
 Er wordt gebruik gemaakt van de OpenWeatherMap API om het huidige weer in Schijndel te laten zien.
 
+![img_1.png](img_1.png)
 
 Benodigdheden:
 - Clone mijn broncode: ($git clone {https://github.com/jeroen-1989/nieuws-app}) -> ($cd nieuws-app) -> ($npm install) -> ($npm start)
@@ -14,6 +16,8 @@ Benodigdheden:
   - inloggegevens firebase console (firebase.google.com): accountnaam: jclaa1989@gmail.com - password: Jclaa1989
   
 
+
+
 Benodigdheden bij eigen firebase-account en eigen weathermap API-key:
 - Een API-key van OpenWeatherMap (Current Weather Data)
     https://openweathermap.org/api
@@ -22,6 +26,7 @@ Benodigdheden bij eigen firebase-account en eigen weathermap API-key:
       - De link is de volledige URI, hierin staan "Locatie: Schijndel" en "Taal: Nederlands" om de API key heen. Let dus goed op:
         begin hiermee: https://api.openweathermap.org/data/2.5/weather?q=Schijndel,nl&units=metric&& 
         plak uw API key daarachter en zet het volgende daar weer achter tegenaan: &lang=nl
+        
 - Firebase/firestore voor de registratie/authenticatie en de opslag van berichten/afbeeldingen:
     - Log jezelf in;
     - Ga naar de Firebase console;

@@ -7,7 +7,10 @@ import {ReactComponent as Mail} from "../../images/footer/mail.svg"
 function Footer() {
     return (
         <footer className={styles.footer}>
-
+            <p className={styles["footer-text"]}>
+                Deze site wordt uitgegeven door MediaLokaal.
+                Hoofdstraat 89, 5482HL, Schijndel.
+            </p>
             <a href="https://facebook.com/medialokaal">
                 <Facebook className={styles["footer-icon"]}/>
             </a>
