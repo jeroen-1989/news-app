@@ -23,7 +23,7 @@ function Dropdown() {
                         <input
                             className={styles["menu-btn"]}
                             type="checkbox"
-                            checked={checked}
+                            defaultChecked={checked}
                             onClick={handleClick}
                         />
 

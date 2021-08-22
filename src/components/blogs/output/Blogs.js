@@ -15,14 +15,18 @@ const Blogs = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await firestore.collection("blogs")
-                .orderBy("timestamp", "desc")
-                .onSnapshot(function (querySnapshot) {
-                    querySnapshot.forEach(function (editorial) {
-                        items.push({key: editorial.id, ...editorial.data()})
+            try {
+                await firestore.collection("blogs")
+                    .orderBy("timestamp", "desc")
+                    .onSnapshot(function (querySnapshot) {
+                        querySnapshot.forEach(function (editorial) {
+                            items.push({key: editorial.id, ...editorial.data()})
+                        })
+                        setBlogs(items)
                     })
-                    setBlogs(items)
-                })
+            } catch (e) {
+                console.error(e)
+            }
         }
         fetchData()
     }, [items])
@@ -32,7 +36,7 @@ const Blogs = () => {
             {
                 blogs.slice(0, blogsCount).map((blogs) => (
 
-                    <article className={styles["output-container"]}>
+                    <article key={blogs.timestamp} className={styles["output-container"]}>
                         <input className={styles["article-btn"]} type="checkbox"/>
                         <div className={styles["article-icon"]}>
                             <span className={styles.icon}/>

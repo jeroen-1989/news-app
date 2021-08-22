@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import {firestore, timestamp, imageStorage} from "../../../firebase/firebase"
 import styles from "./EditorialInput.module.css"
-import {useHistory, Link} from "react-router-dom"
+import {useHistory} from "react-router-dom"
 import Button from "../../helpers/button/Button"
 import CancelButton from "../../helpers/cancel-button/CancelButton"
 
@@ -133,7 +133,8 @@ const EditorialInput = () => {
                                 setCategory(e.target.value)
                             }}>
                         {categories.map((category) =>
-                            <option value={category.value}>
+                            <option key={category.value}
+                                    value={category.value}>
                                 {category.label}
                             </option>
                         )}

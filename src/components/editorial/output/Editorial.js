@@ -15,14 +15,18 @@ function Editorial() {
 
     useEffect(() => {
         const fetchData = async () => {
-            await firestore.collection("editorial")
-                .orderBy("timestamp", "desc")
-                .onSnapshot(function (querySnapshot) {
-                    querySnapshot.forEach(function (editorial) {
-                        items.push({key: editorial.id, ...editorial.data()})
+            try {
+                await firestore.collection("editorial")
+                    .orderBy("timestamp", "desc")
+                    .onSnapshot(function (querySnapshot) {
+                        querySnapshot.forEach(function (editorial) {
+                            items.push({key: editorial.id, ...editorial.data()})
+                        })
+                        setEditorial(items)
                     })
-                    setEditorial(items)
-                })
+            } catch (e) {
+                console.error(e)
+            }
         }
         fetchData()
     }, [items])
@@ -32,7 +36,7 @@ function Editorial() {
         <main className={styles.container}>
             {
                 editorial.slice(0, editorialCount).map((editorial) => (
-                    <article className={styles["output-container"]}>
+                    <article key={editorial.timestamp} className={styles["output-container"]}>
                         <input className={styles["article-btn"]} type="checkbox"/>
 
                         <div className={styles["article-icon"]}>

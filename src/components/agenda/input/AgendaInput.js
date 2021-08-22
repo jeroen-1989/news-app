@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import {firestore} from "../../../firebase/firebase"
-import {useHistory, Link} from "react-router-dom"
+import {useHistory} from "react-router-dom"
 import styles from "./AgendaInput.module.css"
 import Button from "../../helpers/button/Button"
 import CancelButton from "../../helpers/cancel-button/CancelButton";

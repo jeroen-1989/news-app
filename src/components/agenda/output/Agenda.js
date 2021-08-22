@@ -38,7 +38,7 @@ function Agenda() {
 
             {
                 agenda.slice(0, agendaCount).map((agenda) => (
-                    <div className={styles.agenda}>
+                    <div key={agenda.Date} className={styles.agenda}>
                         <h4 className={styles.event}>{agenda.Event}</h4>
                         <p className={styles.content}>Datum: {agenda.Date.split("-").reverse().join("/")}</p>
                         <p className={styles.content}>Locatie: {agenda.Location}</p>

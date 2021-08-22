@@ -6,8 +6,9 @@ function LogOut() {
     const logUserOut = async (e) => {
         e.preventDefault();
 
-        await auth.signOut().then(function () {
-            console.log("Successfully signed out.")
+        await auth.signOut()
+            .then(function () {
+            console.log("Succesvol uitgelogd.")
 
         }).catch(function (error) {
         });
